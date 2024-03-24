@@ -1,7 +1,22 @@
 #!/usr/bin/env bash
 # usage of git hub copilot cli
 
-read -p "ask copilot a query: " query
+read -p "Copilot Suggest or Explain? [s/e]: " response
+case "$response" in
+    s)
+        read -p "ask copilot a query: " query
+     #   tmux split-window -h bash -c "gh copilot explain "$query" | less"
+        gh copilot suggest "$query"
+        ;;
+    e)
+        read -p "ask copilot a query: " query
+        gh copilot explain "$query"
+        ;;
+    *)
+        echo "Invalid option"
+        ;;
+esac
 
-tmux split-window -h bash -c "gh copilot explain "$query" | less"
+#read -p "ask copilot a query: " query
+
 
