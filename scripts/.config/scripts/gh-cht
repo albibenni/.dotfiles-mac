@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# usage of git hub copilot cli
+
+read -p "ask copilot a query: " query
+
+tmux split-window -h bash -c "gh copilot explain "$query" | less"
+
