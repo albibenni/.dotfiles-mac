@@ -15,6 +15,9 @@ export CC="clang-12"
 export CXX="clang++-12"
 export PYTHONBREAKPOINT="pudb.set_trace"
 export GOPATH=$HOME/go
+export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 # export API_TOOLS=$HOME/work/tools/edge/scripts
 export GIT_EDITOR=$VIM
 export N_PREFIX="$HOME/.local/n"
@@ -82,3 +85,4 @@ bindkey -s ^r "source ~/.zshrc\n"
 #     cat $1 > /tmp/file_to_eslint
 #     npx eslint
 # }
+export PATH="/opt/homebrew/opt/llvm@12/bin:$PATH"
