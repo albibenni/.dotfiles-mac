@@ -16,7 +16,3 @@ case "$response" in
         echo "Invalid option"
         ;;
 esac
-
-#read -p "ask copilot a query: " query
-
-
