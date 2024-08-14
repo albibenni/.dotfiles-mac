@@ -86,3 +86,4 @@ bindkey -s ^r "source ~/.zshrc\n"
 #     npx eslint
 # }
 export PATH="/opt/homebrew/opt/llvm@12/bin:$PATH"
+export PATH="$PATH:/opt/nvim-linux64/bin"
