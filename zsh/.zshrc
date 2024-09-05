@@ -36,3 +36,6 @@ if [ -f '/Users/benni/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/benni/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/benni/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+# Created by `pipx` on 2024-08-26 15:27:03
+export PATH="$PATH:/Users/benni/Library/Python/3.12/bin"
