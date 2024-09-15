@@ -2,6 +2,8 @@ alias pn=pnpm
 alias vim=nvim
 alias python=python3
 
+DISABLE_MAGIC_FUNCTIONS=true
+
 export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME=amuse
