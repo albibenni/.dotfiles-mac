@@ -2,7 +2,6 @@ alias pn=pnpm
 alias vim=nvim
 alias python=python3
 
-DISABLE_MAGIC_FUNCTIONS=true
 
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -13,6 +12,7 @@ export LC_CTYPE=en_US.UTF-8
 
 plugins=(git zsh-autosuggestions)
 
+DISABLE_MAGIC_FUNCTIONS=true
 source $ZSH/oh-my-zsh.sh
 source ~/.zsh_profile
 
