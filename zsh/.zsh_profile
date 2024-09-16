@@ -9,7 +9,6 @@ done
 # source /usr/share/doc/fzf/examples/key-bindings.zsh
 # source /usr/share/doc/fzf/examples/completion.zsh
 
-"$HOME/.cargo/env"
 export NRDP="$HOME/work/nrdp"
 export NRDP_BUILDS="$HOME/work/builds"
 export CC="clang-12"
@@ -22,7 +21,10 @@ export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 # export API_TOOLS=$HOME/work/tools/edge/scripts
 export GIT_EDITOR=$VIM
 export N_PREFIX="$HOME/.local/n"
+
 export DOTFILES=$HOME/.dotfiles
+
+export PATH="$N_PREFIX/bin:$PATH"
 
 addToPathFront $HOME/.zig
 # addToPathFront $HOME/.local/.npm-global/bin
