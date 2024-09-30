@@ -6,6 +6,10 @@ else
     session=$(find ~ ~/benni-projects/ ~/work-projects/ -mindepth 1 -maxdepth 2 -type d | fzf)
 fi
 
+if [[ -z $session ]]; then
+    exit 0
+fi
+
 session_name=$(basename "$session" | tr . _)
 tmux_running=$(pgrep tmux)
 
