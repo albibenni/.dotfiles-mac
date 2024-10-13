@@ -1,6 +1,7 @@
 alias pn=pnpm
 alias vim=nvim
 alias python=python3
+alias glpg="git --no-pager log --oneline"
 
 
 export ZSH="$HOME/.oh-my-zsh"
