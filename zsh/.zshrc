@@ -43,5 +43,3 @@ if [ -f '/Users/benni/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '
 # Created by `pipx` on 2024-08-26 15:27:03
 export PATH="$PATH:/Users/benni/Library/Python/3.12/bin"
 
-# # Generated for envman. Do not edit.
-# [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
