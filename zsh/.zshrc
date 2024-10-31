@@ -2,6 +2,8 @@ alias pn=pnpm
 alias vim=nvim
 alias python=python3
 alias glpg="git --no-pager log --oneline"
+alias vid="nvim ~/.dotfiles/"
+alias vinvim="nvim ~/.dotfiles/nvim/.config/nvim/"
 
 
 export ZSH="$HOME/.oh-my-zsh"
