@@ -3,7 +3,8 @@ alias vim=nvim
 alias python=python3
 alias glpg="git --no-pager log --oneline"
 alias vid="nvim ~/.dotfiles/"
-alias vinvim="nvim ~/.dotfiles/nvim/.config/nvim/"
+alias vimnvim="nvim ~/.dotfiles/nvim/.config/nvim/"
+alias vish="nvim ~/.dotfiles/zsh/.zshrc"
 
 
 export ZSH="$HOME/.oh-my-zsh"
@@ -35,6 +36,8 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 export PATH="/opt/homebrew/opt/llvm@12/bin:$PATH"
+export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
+
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/benni/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/benni/Downloads/google-cloud-sdk/path.zsh.inc'; fi
