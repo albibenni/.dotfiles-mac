@@ -1,3 +1,4 @@
+alias cdd="cd ~/.dotfiles/"
 alias pn=pnpm
 alias vim=nvim
 alias python=python3
@@ -5,6 +6,8 @@ alias glpg="git --no-pager log --oneline"
 alias vid="nvim ~/.dotfiles/"
 alias vimnvim="nvim ~/.dotfiles/nvim/.config/nvim/"
 alias vish="nvim ~/.dotfiles/zsh/.zshrc"
+alias vimux="nvim ~/.dotfiles/tmux/.config/tmux/tmux.conf"
+alias vimaero="nvim ~/.dotfiles/aerospace/.config/aerospace/aerospace.toml"
 
 
 export ZSH="$HOME/.oh-my-zsh"
