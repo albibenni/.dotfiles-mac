@@ -1,0 +1,293 @@
+{
+    "editor.lineNumbers": "relative",
+    "terminal.integrated.fontFamily": "BlexMono Nerd Font Propo",
+    "editor.fontFamily": "BlexMono Nerd Font Propo",
+    "editor.fontLigatures": true,
+    "editor.fontWeight": "200",
+
+    "vim.leader": "<Space>",
+    "vim.useCtrlKeys": true,
+
+    "vim.easymotion": true,
+    "vim.incsearch": true,
+    //"vim.useSystemClipboard": true,
+    "vim.hlsearch": true,
+    "vim.normalModeKeyBindingsNonRecursive": [
+        // Undo redo
+        {
+            "before": ["<C-r>"],
+            "commands": ["redo"]
+        },
+        //NAVIGATION
+        // switch b/w buffers
+        {
+            "before": ["<S-h>"],
+            "commands": ["workbench.action.focusLeftGroup"],
+            "when": "editorTextFocus"
+        },
+        {
+            "before": ["<S-l>"],
+            "commands": ["workbench.action.focusRightGroup"],
+            "when": "editorTextFocus"
+        },
+
+        //split
+        {
+            "before": ["leader", "v"],
+            "commands": [":vsplit"],
+            "when": "editorTextFocus"
+        },
+        {
+            "before": ["leader", "s"],
+            "commands": [":split"],
+            "when": "editorTextFocus"
+        },
+
+        //panes
+        {
+            "before": ["leader", "h"],
+            "commands": [":bprevious"],
+            "when": "editorTextFocus"
+        },
+        {
+            "before": ["leader", "l"],
+            "commands": [":bnext"],
+            "when": "editorTextFocus"
+        },
+        //find
+        {
+            "before": ["leader", "p", "s"],
+            "commands": ["fin-it-faster.findWithinFiles"]
+        },
+
+        // NICE TO HAVE
+        {
+            "before": ["leader", "w"],
+            "commands": ["workbench.action.files.save"]
+        },
+        {
+            "before": ["leader", "d"],
+            "commands": ["editor.action.deleteLines"]
+            // dev/null
+        },
+
+        {
+            "before": ["leader", "p", "f"], // like my vim settings
+            "commands": ["workbench.action.quickOpen"]
+        },
+        {
+            "before": ["leader", "r", "n"], // like my vim settings
+            "commands": ["editor.action.rename"],
+            "when": "editorHasRenameProvider && editorTextFocus && !editorReadonly"
+        },
+
+        {
+            "before": ["leader", "f"],
+            "commands": ["editor.action.formatDocument"]
+        },
+        //half page jumps
+        {
+            "before": ["<C-j>"],
+            "commands": ["scrollPageDown", "cursorPageDown"]
+        },
+        {
+            "before": ["<C-k>"],
+            "commands": ["scrollPageUp", "cursorPageUp"]
+        }
+    ],
+    "vim.visualModeKeyBindings": [
+        {
+            "before": ["<"],
+            "commands": ["editor.action.outdentLines"]
+        },
+        {
+            "before": [">"],
+            "commands": ["editor.action.indentLines"]
+        },
+
+        {
+            "before": ["K"],
+            "commands": ["editor.action.moveLinesUpAction"]
+        },
+        {
+            "before": ["J"],
+            "commands": ["editor.action.moveLinesDownAction"]
+        },
+        {
+            "before": ["leader", "d"],
+            "commands": ["editor.action.deleteLines"]
+            // dev/null
+        },
+        {
+            "before": ["leader", "y"],
+            "commands": ["editor.action.clipboardCopyAction"]
+        }
+    ],
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "cSpell.userWords": [
+        "Azimut",
+        "babylonjs",
+        "Benatti",
+        "Bici",
+        "clearcoat",
+        "clsx",
+        "dockerComposeFile",
+        "elysiajs",
+        "Equirectangular",
+        "Fastify",
+        "fragmentshader",
+        "Fxaa",
+        "glsl",
+        "GLTF",
+        "gltfs",
+        "GSIPK",
+        "hookform",
+        "htmlnode",
+        "isaacscript",
+        "lerp",
+        "linkcode",
+        "lowp",
+        "lucide",
+        "mediapipe",
+        "Metallicness",
+        "Metallness",
+        "METALNESS",
+        "Missoun",
+        "moto",
+        "MSAA",
+        "nodenext",
+        "nvmrc",
+        "Occluder",
+        "paramkey",
+        "pelle",
+        "pgrep",
+        "pids",
+        "PMREM",
+        "qwik",
+        "Raycaster",
+        "RGBE",
+        "Sella",
+        "skybox",
+        "smol",
+        "SSAO",
+        "tailwindcss",
+        "textnode",
+        "textnote",
+        "Tonemap",
+        "Tonemapping",
+        "trpc",
+        "tsup",
+        "undici",
+        "vertexshader",
+        "wireframe"
+    ],
+    "yaml.customTags": [
+        "!And",
+        "!And sequence",
+        "!If",
+        "!If sequence",
+        "!Not",
+        "!Not sequence",
+        "!Equals",
+        "!Equals sequence",
+        "!Or",
+        "!Or sequence",
+        "!FindInMap",
+        "!FindInMap sequence",
+        "!Base64",
+        "!Join",
+        "!Join sequence",
+        "!Cidr",
+        "!Ref",
+        "!Sub",
+        "!Sub sequence",
+        "!GetAtt",
+        "!GetAZs",
+        "!ImportValue",
+        "!ImportValue sequence",
+        "!Select",
+        "!Select sequence",
+        "!Split",
+        "!Split sequence"
+    ],
+    "editor.minimap.enabled": false,
+    "workbench.sideBar.location": "right",
+    "files.associations": {
+        "*.css": "tailwindcss"
+    },
+    "go.toolsManagement.autoUpdate": true,
+    "git.openRepositoryInParentFolders": "never",
+    "prettier.trailingComma": "all",
+    "window.zoomLevel": 1,
+    "gitlens.plusFeatures.enabled": false,
+    "security.workspace.trust.untrustedFiles": "open",
+    "github.copilot.advanced": {},
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    },
+    "workbench.activityBar.location": "top",
+    "editor.fontSize": 14,
+    "github.copilot.enable": {
+        "*": true,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false
+    },
+    "prisma.showPrismaDataPlatformNotification": false,
+    "markdownlint.config": {
+        "MD049": { "style": "asterisk" }
+    },
+    "redhat.telemetry.enabled": false,
+    "prettier.tabWidth": 4,
+    "[go]": {
+        "editor.defaultFormatter": "golang.go"
+    },
+    "workbench.colorTheme": "Night Owl",
+    "workbench.iconTheme": "vscode-icons",
+    "git.ignoreRebaseWarning": true,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "window.customTitleBarVisibility": "auto",
+    "vscode-neovim.highlightGroups.highlights": {
+        "IncSearch": {
+            "backgroundColor": "theme.editor.findMatchBackground"
+        },
+        "CurSearch": {
+            "backgroundColor": "theme.editor.findMatchBackground"
+        },
+        "Search": {
+            "backgroundColor": "theme.editor.findMatchHighlightBackground"
+        },
+        "Substitute": {
+            "backgroundColor": "theme.editor.foreground",
+            "color": "theme.editor.background"
+        }
+    },
+    "vscode-neovim.neovimExecutablePaths.linux": "/opt/homebrew/bin/nvim"
+    // "prettier
+    // {
+    //   "comment": "Disables rules that may conflict with Prettier",
+
+    //   "blanks-around-fences": false,
+    //   "blanks-around-headings": false,
+    //   "blanks-around-lists": false,
+    //   "code-fence-style": false,
+    //   "emphasis-style": false,
+    //   "heading-start-left": false,
+    //   "hr-style": false,
+    //   "line-length": false,
+    //   "list-indent": false,
+    //   "list-marker-space": false,
+    //   "no-blanks-blockquote": false,
+    //   "no-hard-tabs": false,
+    //   "no-missing-space-atx": false,
+    //   "no-missing-space-closed-atx": false,
+    //   "no-multiple-blanks": false,
+    //   "no-multiple-space-atx": false,
+    //   "no-multiple-space-blockquote": false,
+    //   "no-multiple-space-closed-atx": false,
+    //   "no-trailing-spaces": false,
+    //   "ol-prefix": false,
+    //   "strong-style": false,
+    //   "ul-indent": false
+    // }
+}

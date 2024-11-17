@@ -19,6 +19,9 @@ export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 export GIT_EDITOR=$VIM
 export N_PREFIX="$HOME/.local/n"
 
+# lua5.1
+export PATH=~/.local/bin/:$PATH
+
 export DOTFILES=$HOME/.dotfiles
 
 export PATH="$N_PREFIX/bin:$PATH"
