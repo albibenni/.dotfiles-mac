@@ -30,6 +30,11 @@
         "command": "workbench.action.terminal.kill",
         "when": "terminalFocus"
     },
+    {
+        "key": "ctrl+shift+t",
+        "command": "workbench.action.terminal.toggleTerminal",
+        "when": "editorFocus || explorerViewletFocus || editorIsOpen"
+    },
 
     //Explorer navigation
     {
