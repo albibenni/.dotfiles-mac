@@ -51,12 +51,12 @@
     {
         "key": "a",
         "command": "explorer.newFile",
-        "when": "explorerViewletFocus"
+        "when": "explorerViewletFocus && !inputFocus"
     },
     {
         "key": "r",
         "command": "renameFile",
-        "when": "explorerViewletFocus"
+        "when": "explorerViewletFocus && !inputFocus"
     },
     {
         "key": "ctrl+a",
