@@ -21,6 +21,7 @@ export N_PREFIX="$HOME/.local/n"
 
 # lua5.1
 export PATH=~/.local/bin/:$PATH
+export PATH=$HOME/.cargo/bin:$PATH
 
 # postgres
 export PATH=/Library/PostgreSQL/17/bin:$PATH
