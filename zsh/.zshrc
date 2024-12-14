@@ -1,4 +1,4 @@
-echo "Hello Benni"
+echo "Hello $USER"
 
 alias cdd="cd ~/.dotfiles/"
 alias pn=pnpm
