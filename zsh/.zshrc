@@ -1,3 +1,5 @@
+echo "Hello Benni"
+
 alias cdd="cd ~/.dotfiles/"
 alias pn=pnpm
 alias vim=nvim
