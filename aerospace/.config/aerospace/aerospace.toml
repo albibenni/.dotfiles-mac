@@ -115,6 +115,7 @@ cmd-7 = 'workspace 7'
 cmd-8 = 'workspace 8'
 cmd-9 = 'workspace 9'
 cmd-0 = 'workspace 10' # In your config, you can drop workspace bindings that you don't need
+#alt-1 = 'workspace 11'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 cmd-shift-1 = 'move-node-to-workspace 1'
@@ -136,6 +137,19 @@ alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
 alt-shift-semicolon = 'mode service'
 cmd-shift-r= 'mode resize'
+
+[workspace-to-monitor-force-assignment]
+1 = 'Mi Monitor'
+2 = 'Mi Monitor'
+3 = 'Mi Monitor'
+4 = 'Mi Monitor'
+5 = 'Mi Monitor'
+6 = 'Mi Monitor'
+7 = 'Mi Monitor'
+8 = 'Mi Monitor'
+9 = ['LG ULTRAGEAR', 'Mi Monitor']
+10 = ['LG ULTRAGEAR', 'Mi Monitor']
+
 
 [mode.resize.binding]
 minus = 'resize smart -50'
@@ -165,3 +179,6 @@ run = "move-node-to-workspace 10"
 [[on-window-detected]]
 if.app-id = 'com.microsoft.Outlook'
 run = "move-node-to-workspace 9"
+[[on-window-detected]]
+if.app-id = 'com.microsoft.teams2'
+run = ['move-node-to-workspace 8']
