@@ -147,7 +147,7 @@ cmd-shift-r= 'mode resize'
 6 = 'Mi Monitor'
 7 = 'Mi Monitor'
 8 = 'Mi Monitor'
-9 = ['LG ULTRAGEAR', 'Mi Monitor']
+9 = ['Mi Monitor']
 10 = ['LG ULTRAGEAR', 'Mi Monitor']
 
 
@@ -172,13 +172,13 @@ cmd-shift-l = ['join-with right', 'mode main']
 
 [[on-window-detected]]
 if.app-id = 'com.spotify.client'
-run = "move-node-to-workspace 10"
+run = "move-node-to-workspace 8"
 [[on-window-detected]]
 if.app-id = 'net.whatsapp.WhatsApp'
-run = "move-node-to-workspace 10"
+run = "move-node-to-workspace 8"
 [[on-window-detected]]
 if.app-id = 'com.microsoft.Outlook'
 run = "move-node-to-workspace 9"
 [[on-window-detected]]
 if.app-id = 'com.microsoft.teams2'
-run = ['move-node-to-workspace 8']
+run = ['move-node-to-workspace 9']
