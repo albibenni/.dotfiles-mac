@@ -1,5 +1,6 @@
 theme = catppuccin-mocha
 #font-family = BlexMono Nerd Font Propo
 font-family = CaskaydiaCove Nerd Font
+background-opacity = 0.9
 #font-family = JetBrainsMono Nerd Font
 #font-family = FiraCode Nerd Font
