@@ -139,16 +139,16 @@ alt-shift-semicolon = 'mode service'
 cmd-shift-r= 'mode resize'
 
 [workspace-to-monitor-force-assignment]
-1 = 'Mi Monitor'
-2 = 'Mi Monitor'
-3 = 'Mi Monitor'
-4 = 'Mi Monitor'
-5 = 'Mi Monitor'
-6 = 'Mi Monitor'
-7 = 'Mi Monitor'
-8 = 'Mi Monitor'
-9 = ['Mi Monitor']
-10 = ['LG ULTRAGEAR', 'Mi Monitor']
+1 = ['BenQ RD280U','Mi Monitor']
+2 = ['BenQ RD280U','Mi Monitor']
+3 = ['BenQ RD280U','Mi Monitor']
+4 = ['BenQ RD280U','Mi Monitor']
+5 = ['BenQ RD280U','Mi Monitor']
+6 = ['BenQ RD280U','Mi Monitor']
+7 = ['BenQ RD280U','Mi Monitor']
+8 = ['BenQ RD280U','Mi Monitor']
+9 = ['BenQ RD280U','Mi Monitor']
+10 = ['LG ULTRAGEAR',  'Mi Monitor','BenQ RD280U']
 
 
 [mode.resize.binding]
