@@ -11,6 +11,10 @@ alias vimvim="nvim ~/.dotfiles/nvim/.config/nvim/"
 alias vish="nvim ~/.dotfiles/zsh/.zshrc"
 alias vimux="nvim ~/.dotfiles/tmux/.config/tmux/tmux.conf"
 alias vimaero="nvim ~/.dotfiles/aerospace/.config/aerospace/aerospace.toml"
+# pomodoro timer aliases for rust_can_make_you_focus app
+alias pomocode="sudo ~/.dotfiles/scripts/scripts/rust_can_make_you_focus coding"
+alias pomoall="sudo ~/.dotfiles/scripts/scripts/rust_can_make_you_focus coding"
+alias pomostudy="sudo ~/.dotfiles/scripts/scripts/rust_can_make_you_focus studying"
 
 
 export ZSH="$HOME/.oh-my-zsh"
