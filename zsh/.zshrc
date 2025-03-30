@@ -16,6 +16,7 @@ alias pomocode="sudo ~/.dotfiles/scripts/scripts/rust_can_make_you_focus coding"
 alias pomocodeyt="sudo ~/.dotfiles/scripts/scripts/rust_can_make_you_focus coding_yt"
 alias pomoall="sudo ~/.dotfiles/scripts/scripts/rust_can_make_you_focus coding"
 alias pomostudy="sudo ~/.dotfiles/scripts/scripts/rust_can_make_you_focus studying"
+alias pomostudyyt="sudo ~/.dotfiles/scripts/scripts/rust_can_make_you_focus studying_yt"
 
 
 export ZSH="$HOME/.oh-my-zsh"
