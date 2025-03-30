@@ -13,6 +13,7 @@ alias vimux="nvim ~/.dotfiles/tmux/.config/tmux/tmux.conf"
 alias vimaero="nvim ~/.dotfiles/aerospace/.config/aerospace/aerospace.toml"
 # pomodoro timer aliases for rust_can_make_you_focus app
 alias pomocode="sudo ~/.dotfiles/scripts/scripts/rust_can_make_you_focus coding"
+alias pomocodeyt="sudo ~/.dotfiles/scripts/scripts/rust_can_make_you_focus coding_yt"
 alias pomoall="sudo ~/.dotfiles/scripts/scripts/rust_can_make_you_focus coding"
 alias pomostudy="sudo ~/.dotfiles/scripts/scripts/rust_can_make_you_focus studying"
 
