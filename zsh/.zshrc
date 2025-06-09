@@ -26,6 +26,8 @@ ZSH_THEME=amuse
 export LC_ALL=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 
+export MANPAGER='nvim +Man!'
+
 plugins=(git zsh-autosuggestions)
 
 DISABLE_MAGIC_FUNCTIONS=true
@@ -59,4 +61,8 @@ if [ -f '/Users/benni/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '
 
 # Created by `pipx` on 2024-08-26 15:27:03
 export PATH="$PATH:/Users/benni/Library/Python/3.12/bin"
+
+
+# Added by Windsurf
+export PATH="/Users/benni/.codeium/windsurf/bin:$PATH"
 
