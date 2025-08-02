@@ -66,3 +66,4 @@ export PATH="$PATH:/Users/benni/Library/Python/3.12/bin"
 # Added by Windsurf
 export PATH="/Users/benni/.codeium/windsurf/bin:$PATH"
 
+eval "$(zoxide init zsh)"
