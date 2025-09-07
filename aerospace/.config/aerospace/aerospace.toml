@@ -145,15 +145,15 @@ alt-shift-semicolon = 'mode service'
 cmd-shift-r= 'mode resize'
 
 [workspace-to-monitor-force-assignment]
-1 = ['BenQ RD280U','BenQ EW3270U','Mi Monitor','LG ULTRAGEAR']
-2 = ['BenQ RD280U','BenQ EW3270U','Mi Monitor','LG ULTRAGEAR']
-3 = ['BenQ RD280U','BenQ EW3270U','Mi Monitor','LG ULTRAGEAR']
-4 = ['BenQ RD280U','BenQ EW3270U','Mi Monitor','LG ULTRAGEAR']
-5 = ['BenQ RD280U','BenQ EW3270U','Mi Monitor','LG ULTRAGEAR']
-6 = ['BenQ RD280U','BenQ EW3270U','Mi Monitor','LG ULTRAGEAR']
-7 = ['BenQ RD280U','BenQ EW3270U','Mi Monitor','LG ULTRAGEAR']
-8 = ['BenQ RD280U','BenQ EW3270U','Mi Monitor','LG ULTRAGEAR']
-9 = ['BenQ RD280U','BenQ EW3270U','Mi Monitor','LG ULTRAGEAR']
+1 = ['BenQ RD280U','Mi Monitor','BenQ EW3270U','LG ULTRAGEAR']
+2 = ['BenQ RD280U','Mi Monitor','BenQ EW3270U','LG ULTRAGEAR']
+3 = ['BenQ RD280U','Mi Monitor','BenQ EW3270U','LG ULTRAGEAR']
+4 = ['BenQ RD280U','Mi Monitor','BenQ EW3270U','LG ULTRAGEAR']
+5 = ['BenQ RD280U','Mi Monitor','BenQ EW3270U','LG ULTRAGEAR']
+6 = ['BenQ RD280U','Mi Monitor','BenQ EW3270U','LG ULTRAGEAR']
+7 = ['BenQ RD280U','Mi Monitor','BenQ EW3270U','LG ULTRAGEAR']
+8 = ['BenQ RD280U','Mi Monitor','BenQ EW3270U','LG ULTRAGEAR']
+9 = ['BenQ RD280U','Mi Monitor','BenQ EW3270U','LG ULTRAGEAR']
 10 = ['LG ULTRAGEAR', 'LG HDR WFHD','Mi Monitor Ex','BenQ RD280U','BenQ EW3270U',]
 
 
