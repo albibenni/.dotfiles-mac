@@ -28,7 +28,7 @@ export LC_CTYPE=en_US.UTF-8
 
 export MANPAGER='nvim +Man!'
 
-plugins=(git zsh-autosuggestions)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 
 DISABLE_MAGIC_FUNCTIONS=true
 source $ZSH/oh-my-zsh.sh
