@@ -154,7 +154,7 @@ cmd-shift-r= 'mode resize'
 7 = ['BenQ RD280U','Mi Monitor','BenQ EW3270U','LG ULTRAGEAR']
 8 = ['BenQ RD280U','Mi Monitor','BenQ EW3270U','LG ULTRAGEAR']
 9 = ['BenQ RD280U','Mi Monitor','BenQ EW3270U','LG ULTRAGEAR']
-10 = ['LG ULTRAGEAR', 'LG HDR WFHD','Mi Monitor Ex','BenQ RD280U','BenQ EW3270U',]
+10 = ['LG ULTRAGEAR','Built-in Retina Display', 'LG HDR WFHD','Mi Monitor Ex','BenQ RD280U','BenQ EW3270U']
 
 
 [mode.resize.binding]
