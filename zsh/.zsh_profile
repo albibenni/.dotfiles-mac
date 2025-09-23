@@ -19,6 +19,8 @@ export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 export GIT_EDITOR=$VIM
 export N_PREFIX="$HOME/.local/n"
+export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
+
 
 # lua5.1
 export PATH=~/.local/bin/:$PATH
@@ -29,6 +31,8 @@ export PATH=/Library/PostgreSQL/17/bin:$PATH
 export DOTFILES=$HOME/.dotfiles
 
 export PATH="$N_PREFIX/bin:$PATH"
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+
 
 addToPathFront $HOME/.config/tmux/scripts
 addToPathFront $HOME/.config/scripts
