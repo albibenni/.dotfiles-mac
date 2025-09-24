@@ -5,6 +5,11 @@
 ""let mapleader = "\<Space>"
 
 map <Space> <Leader>
+nnoremap r :action IdeaVim.ReloadVimRc.reload<CR>
+
+nnoremap <c-z> :action ToggleDistractionFreeMode<CR>
+nnoremap <c-t> :action ActivateTerminalToolWindow<CR>
+nnoremap <leader>t :action Terminal.OpenInTerminal<CR>
 
 "" -- Suggested options --
 " Show a few lines of context around the cursor. Note that this makes the
@@ -15,17 +20,28 @@ set scrolloff=5
 set incsearch
 
 set relativenumber
+
+" smart join by idea
+set ideajoin
+" set idearefactor=keep
+
+" set sorround
+
+" tree for file explorer plugin
+set NERDTree
+nmap <leader>ee :NERDTreeToggle<CR>
+" let g:NERDTreeMapActivateNode='l'
+" let g:NERDTreeMapJumpParent='h'
+
 " Don't use Ex mode, use Q for formatting.
 map Q gq
 
 " --- Enable IdeaVim plugins https://jb.gg/ideavim-plugins
 "sethandler <C-C> n-v:ide i:vim
 "sethandler <S-h> n:ide
-nmap H :action PreviousTab<CR>
-nmap L :action NextTab<CR>
 
-"nmap <leader>h :action PreviousTab<CR>
-"nmap <leader>l :action NextTab<CR>
+nnoremap H :action PreviousTab<CR>
+nnoremap L :action NextTab<CR>
 nmap <leader>tt :action ProjectView<CR>
 
 vmap J :m '>+1<CR>gv=gv
@@ -52,7 +68,7 @@ Plug 'tpope/vim-commentary'
 "map \r <Action>(ReformatCode)
 nmap <leader>f <Action>(ReformatCode)
 nmap <leader>w <Action>(SaveAll)
-nmap <leader>rn <Action>(Reformat)
+"nmap <leader>rn <Action>(Reformat)
 
 map <leader>rr <Action>(Run)
 map <leader>n <Action>(NewFile)
@@ -64,3 +80,39 @@ map <leader>n <Action>(NewFile)
 "" Map \b to toggle the breakpoint on the current line
 "map \b <Action>(ToggleLineBreakpoint)
 
+
+" NAVIGATION
+nnoremap <c-w-v> :action SplitVertically<CR>
+nnoremap <c--> :action SplitHorizontally<CR>
+"nnoremap <TAB> :action PreviousTab<CR>
+
+nnoremap <Leader>q :action CloseContent<CR>
+"nnoremap <Leader>qa :action CloseAllEditors<CR>
+
+" Refactoring
+nnoremap <leader>rn :action RenameElement<CR>
+
+" errors
+nnoremap ]d :action GotoNextError<CR>
+nnoremap [d :action GotoPreviousError<CR>
+
+" Search
+"nnoremap gd :action ShowUsages<CR>
+nnoremap <c-r> :action RecentFiles<CR>
+"nnoremap <c-f> :action GotoFile<CR>
+nnoremap gr :action GotoImplementation<CR>
+nnoremap gd :action GotToDeclaration<CR>
+nnoremap gt :action GotToTest<CR>
+nnoremap <leader>h :action CallHierarchy<CR>
+nnoremap <leader>pf :action GotoFile<CR>
+nnoremap <c-p> :action FindInPath<CR>
+nnoremap <c-a> :action GotoAction<CR>
+nnoremap <leader>pr :action GotoRelated<CR>
+"nnoremap <leader>ps :action ShowNavBar<CR>
+
+" Run
+" nnoremap ,r :action ContextRun<CR>
+" nnoremap ,c :action RunClass<CR>
+" nnoremap ,f :action ChooseRunConfiguration<CR>
+" nnoremap ,t :action ActivateRunToolWindow<CR>
+" nnoremap ,u :action Rerun<CR>
