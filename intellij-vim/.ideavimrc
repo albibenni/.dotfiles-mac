@@ -9,7 +9,9 @@ nnoremap r :action IdeaVim.ReloadVimRc.reload<CR>
 
 nnoremap <c-z> :action ToggleDistractionFreeMode<CR>
 nnoremap <c-t> :action ActivateTerminalToolWindow<CR>
-nnoremap <leader>t :action Terminal.OpenInTerminal<CR>
+nnoremap <leader>t :action HideActiveWindow<CR>
+
+"nnoremap <leader>t :action Terminal.OpenInTerminal<CR>
 
 "" -- Suggested options --
 " Show a few lines of context around the cursor. Note that this makes the
