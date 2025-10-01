@@ -9,4 +9,3 @@ title="Hello Benni"
 font-size=17
 font-feature=-liga
 font-thicken=true
-keybind = shift+enter=text:\x1b\r
