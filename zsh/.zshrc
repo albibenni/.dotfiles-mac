@@ -11,6 +11,7 @@ alias vimvim="nvim ~/.dotfiles/nvim/.config/nvim/"
 alias vish="nvim ~/.dotfiles/zsh/.zshrc"
 alias vimux="nvim ~/.dotfiles/tmux/.config/tmux/tmux.conf"
 alias vimaero="nvim ~/.dotfiles/aerospace/.config/aerospace/aerospace.toml"
+
 # pomodoro timer aliases for rust_can_make_you_focus app
 alias pomocode="sudo ~/.dotfiles/scripts/scripts/rust_can_make_you_focus coding"
 alias pomocodeyt="sudo ~/.dotfiles/scripts/scripts/rust_can_make_you_focus coding_yt"
@@ -18,6 +19,21 @@ alias pomoall="sudo ~/.dotfiles/scripts/scripts/rust_can_make_you_focus coding"
 alias pomostudy="sudo ~/.dotfiles/scripts/scripts/rust_can_make_you_focus studying"
 alias pomostudyyt="sudo ~/.dotfiles/scripts/scripts/rust_can_make_you_focus studying_yt"
 
+# kubectl
+alias k="kubectl"
+
+# Enable zsh completion system (if not already enabled)
+autoload -Uz compinit
+compinit
+
+# Load kubectl completion for zsh
+source <(kubectl completion zsh)
+
+# Apply kubectl completion to the 'k' alias
+complete -o default -F __start_kubectl k
+
+
+###
 
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -67,3 +83,7 @@ export PATH="$PATH:/Users/benni/Library/Python/3.12/bin"
 export PATH="/Users/benni/.codeium/windsurf/bin:$PATH"
 
 eval "$(zoxide init zsh)"
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/benni/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
