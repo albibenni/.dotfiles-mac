@@ -16,15 +16,19 @@ export PYTHONBREAKPOINT="pudb.set_trace"
 export GOPATH=$HOME/go
 export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
-export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 export GIT_EDITOR=$VIM
 export N_PREFIX="$HOME/.local/n"
 
+# PATH
 # openjdk - JAVA
-export CPPFLAGS="-I/opt/homebrew/opt/openjdk@21/include" #TODO: change version here
-export JAVA_HOME="/opt/homebrew/opt/openjdk@21" #TODO: change version here
+export CPPFLAGS="-I/opt/homebrew/opt/openjdk@25/include" #TODO: change version here
+export JAVA_HOME="/opt/homebrew/opt/openjdk@25" #TODO: change version here
 export PATH="/opt/homebrew/opt/openjdk@21/bin:$PATH" #TODO: change version here
 
+# path first lower priority
+# export PATH="$PATH:$HOME/kafka_2.13-4.1.0/bin" #kafka
+# path last higher priority - override system
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 # lua5.1
 export PATH=~/.local/bin/:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
