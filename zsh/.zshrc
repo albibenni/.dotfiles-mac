@@ -21,6 +21,8 @@ alias pomostudyyt="sudo ~/.dotfiles/scripts/scripts/rust_can_make_you_focus stud
 
 # kubectl
 alias k="kubectl"
+alias kgp="kubectl get pods"
+alias kgpw="kubectl get pods -o wide"
 
 # Enable zsh completion system (if not already enabled)
 autoload -Uz compinit
