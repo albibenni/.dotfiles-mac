@@ -1,8 +1,13 @@
 echo "Hello $USER"
 
+
+## VIM / NVIM
+alias vim=nvim
+
+alias less="nvim -R -c 'set ft=man' -"
+
 alias cdd="cd ~/.dotfiles/"
 alias pn=pnpm
-alias vim=nvim
 alias python=python3
 alias glool="git --no-pager log --oneline --decorate --graph"
 alias gloo="git --no-pager log -n 30 --oneline --decorate --graph"
@@ -44,7 +49,6 @@ ZSH_THEME=amuse
 export LC_ALL=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 
-export MANPAGER='nvim +Man!'
 
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 

@@ -1,8 +1,10 @@
 export XDG_CONFIG_HOME=$HOME/.config
-export VISUAL=nvim
-export EDITOR="$VISUAL"
 
-VIM="nvim"
+#VIM="nvim"
+export VISUAL='nvim'
+export EDITOR='nvim'
+export MANPAGER='nvim +Man!'
+
 
 PERSONAL=$XDG_CONFIG_HOME/personal
 source $PERSONAL/env
