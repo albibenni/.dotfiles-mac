@@ -1,5 +1,9 @@
 echo "Hello $USER"
 
+# Fix TERM for tmux - don't override if already inside tmux
+if [ -n "$TMUX" ]; then
+  export TERM=tmux-256color
+fi
 
 ## VIM / NVIM
 alias vim=nvim
