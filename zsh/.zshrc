@@ -29,15 +29,19 @@ alias k="kubectl"
 alias kgp="kubectl get pods"
 alias kgpw="kubectl get pods -o wide"
 
-# Enable zsh completion system (if not already enabled)
+
+# # Enable zsh completion system (if not already enabled)
 autoload -Uz compinit
 compinit
 
-# Load kubectl completion for zsh
+ # Load kubectl completion for zsh
 source <(kubectl completion zsh)
 
-# Apply kubectl completion to the 'k' alias
+ # Apply kubectl completion to the 'k' alias
 complete -o default -F __start_kubectl k
+
+# Enable zsh completion system (if not already enabled) -- other option
+#complete -F __start_kubectl k  # This actually works in zsh too for kubectl
 
 
 ###
