@@ -33,6 +33,9 @@ alias k="kubectl"
 alias kgp="kubectl get pods"
 alias kgpw="kubectl get pods -o wide"
 
+# linux commands on macOS
+alias watch="~/.dotfiles/scripts/scripts/watch.sh"
+
 
 # # Enable zsh completion system (if not already enabled)
 autoload -Uz compinit
