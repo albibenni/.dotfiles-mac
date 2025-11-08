@@ -41,14 +41,12 @@ alias watch="~/.dotfiles/scripts/scripts/watch.sh"
 autoload -Uz compinit
 compinit
 
- # Load kubectl completion for zsh
-source <(kubectl completion zsh)
-
- # Apply kubectl completion to the 'k' alias
-complete -o default -F __start_kubectl k
-
-# Enable zsh completion system (if not already enabled) -- other option
-#complete -F __start_kubectl k  # This actually works in zsh too for kubectl
+ # Load kubectl completion for zsh (only if kubectl is installed)
+if command -v kubectl &> /dev/null; then
+  source <(kubectl completion zsh)
+  # Note: 'complete' is bash-specific, using zsh style completion instead
+  compdef k=kubectl
+fi
 
 
 ###
