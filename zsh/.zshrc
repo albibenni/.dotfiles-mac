@@ -1,4 +1,5 @@
 echo "Hello $USER"
+neofetch
 
 # Fix TERM for tmux - don't override if already inside tmux
 if [ -n "$TMUX" ]; then
