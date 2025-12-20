@@ -1,0 +1,99 @@
+add_newline = true
+command_timeout = 200
+format = """
+[┌─](bold cyan)\
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_status\
+$python\
+$nodejs\
+$rust\
+$golang\
+$lua\
+$docker_context\
+$kubernetes\
+$cmd_duration\
+$time
+[└─](bold cyan)$character"""
+
+[character]
+error_symbol = "[✗](bold cyan)"
+success_symbol = "[❯](bold cyan)"
+
+[directory]
+truncation_length = 2
+truncation_symbol = "…/"
+repo_root_style = "bold red"
+repo_root_format = " [$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style) "
+
+[git_branch]
+style = 'fg:green'
+symbol = ' '
+format = '[on](white) [$symbol$branch ]($style)'
+
+[git_status]
+format     = '[$all_status$ahead_behind]($style)'
+style      = "bold red"
+ahead      = "⇡${count} "
+diverged   = "⇕⇡${ahead_count}⇣${behind_count} "
+behind     = "⇣${count} "
+conflicted = "x "
+up_to_date = ""
+untracked  = "! "
+modified   = ""
+stashed    = ""
+staged     = ""
+renamed    = ""
+deleted    = ""
+
+# Show command duration if > 2 seconds
+[cmd_duration]
+min_time = 2_000
+format = "took [$duration](bold yellow) "
+
+# Python version
+[python]
+symbol = "  "
+format = '[$symbol$version]($style) '
+style = "yellow"
+
+[lua]
+symbol = ' '
+
+# Node.js version
+[nodejs]
+symbol = "⬢ "
+format = '[$symbol$version]($style) '
+style = "green"
+
+# Rust version
+[rust]
+symbol = "🦀 "
+format = '[$symbol$version]($style) '
+style = "orange"
+
+# Go version
+[golang]
+symbol = ' '
+format = '[$symbol$version]($style) '
+style = "cyan"
+
+# Kubernetes context
+[kubernetes]
+disabled = true
+format = '[☸  $context](bold blue) '
+
+# Docker context
+[docker_context]
+symbol = ' '
+style = 'fg:#06969A'
+format = '[$symbol]($style) $path'
+detect_files = ['docker-compose.yml', 'docker-compose.yaml', 'Dockerfile']
+detect_extensions = ['Dockerfile']
+
+[time]
+disabled = false
+format = '🕙[$time]($style) '
+style = "bright-white"
