@@ -2,9 +2,17 @@
 
 set -e
 
-BASH_PATH=$(which bash)
+BASH_PATH="/opt/homebrew/bin/bash"
 
-echo "Found bash at: $BASH_PATH"
+# Check if Homebrew bash exists
+if [[ ! -f "$BASH_PATH" ]]; then
+    echo "Error: Homebrew bash not found at $BASH_PATH"
+    echo "Please install it with: brew install bash"
+    exit 1
+fi
+
+echo "Using Homebrew bash at: $BASH_PATH"
+echo "Version: $($BASH_PATH --version | head -1)"
 
 # Check if bash is already in /etc/shells
 if grep -qxF "$BASH_PATH" /etc/shells; then
