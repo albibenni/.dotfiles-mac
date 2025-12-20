@@ -41,29 +41,6 @@ if [ -f ~/.config/bash/bash_bind.sh ]; then
     source ~/.config/bash/bash_bind.sh
 fi
 
-# Source bash profile (needs Omarchy functions like addToPathFront)
-# if [ -f ~/.bash_profile ]; then
-#   source ~/.bash_profile
-# fi
-
-# Ctrl+T - Fuzzy file search
-# - Type to search files in current directory and subdirectories
-# - Navigate with arrow keys, select with Enter
-# - Multi-select with Tab
-#
-# Ctrl+R - Fuzzy command history search
-# - Search through your bash history interactively
-# - Much better than the default reverse search
-#
-# Alt+C - Fuzzy directory navigation
-# - Search and cd into directories
-#
-# **<Tab> - Fuzzy completion (trigger completion)
-# - Works for paths, commands, etc.
-# - Example: vim **<Tab> will open fzf to select a file
-# - Example: cd **<Tab> will fuzzy search directories
-# - Example: kill -9 **<Tab> will search processes
-
 #NOTE: Enable fzf key bindings and fuzzy completion
 if [ -f /usr/share/fzf/completion.bash ]; then
     source /usr/share/fzf/completion.bash

@@ -65,7 +65,7 @@ if command -v zoxide &>/dev/null; then
 fi
 
 open() {
-    xdg-open "$@" >/dev/null 2>&1 &
+    command open "$@"
 }
 
 # Directories
@@ -73,13 +73,3 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 
-# Tools
-alias d='docker'
-alias r='rails'
-n() { if [ "$#" -eq 0 ]; then nvim .; else nvim "$@"; fi; }
-
-# Git
-alias g='git'
-alias gcm='git commit -m'
-alias gcam='git commit -a -m'
-alias gcad='git commit -a --amend'
