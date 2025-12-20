@@ -1,13 +1,13 @@
 #!/usr/bin/env zsh
 
 
-addToPath() {
+addToPathzsh() {
     if [[ "$PATH" != *"$1"* ]]; then
         export PATH=$PATH:$1
     fi
 }
 
-addToPathFront() {
+addToPathFrontzsh() {
     if [[ "$PATH" != *"$1"* ]]; then
         export PATH=$1:$PATH
     fi
