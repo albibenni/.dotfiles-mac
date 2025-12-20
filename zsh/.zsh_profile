@@ -40,7 +40,7 @@ export PATH=$HOME/.cargo/bin:$PATH
 
 # postgres
 export PATH=/Library/PostgreSQL/17/bin:$PATH
-export DOTFILES=$HOME/.dotfiles
+export DOTFILES=$HOME/dotfiles
 
 export PATH="$N_PREFIX/bin:$PATH"
 
@@ -51,7 +51,7 @@ addToPathFrontzsh $HOME/.config/scripts
 addToPathFrontzsh $HOME/.local/bin
 addToPathFrontzsh $HOME/go/bin
 
-bindkey -s ^f "tmux-sessionizer\n"
+bindkey -s ^f "tmux-sessionizer.sh\n"
 bindkey -s ^s "source ~/.zshrc\n"
 export PATH="/opt/homebrew/opt/llvm@12/bin:$PATH"
 export PATH="$PATH:/opt/nvim-linux64/bin"

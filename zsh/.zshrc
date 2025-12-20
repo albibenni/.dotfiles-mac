@@ -11,23 +11,23 @@ alias vim=nvim
 
 alias less="nvim -R -c 'set ft=man' -"
 
-alias cdd="cd ~/.dotfiles/"
+alias cdd="cd ~/dotfiles/"
 alias pn=pnpm
 alias python=python3
 alias glool="git --no-pager log --oneline --decorate --graph"
 alias gloo="git --no-pager log -n 30 --oneline --decorate --graph"
-alias vid="nvim ~/.dotfiles/"
-alias vimvim="nvim ~/.dotfiles/nvim/.config/nvim/"
-alias vish="nvim ~/.dotfiles/zsh/.zshrc"
-alias vimux="nvim ~/.dotfiles/tmux/.config/tmux/tmux.conf"
-alias vimaero="nvim ~/.dotfiles/aerospace/.config/aerospace/aerospace.toml"
+alias vid="nvim ~/dotfiles/"
+alias vimvim="nvim ~/dotfiles/nvim/.config/nvim/"
+alias vish="nvim ~/dotfiles/zsh/.zshrc"
+alias vimux="nvim ~/dotfiles/tmux/.config/tmux/tmux.conf"
+alias vimaero="nvim ~/dotfiles/aerospace/.config/aerospace/aerospace.toml"
 
 # pomodoro timer aliases for rust_can_make_you_focus app
-alias pomocode="sudo ~/.dotfiles/scripts/scripts/rust_can_make_you_focus coding"
-alias pomocodeyt="sudo ~/.dotfiles/scripts/scripts/rust_can_make_you_focus coding_yt"
-alias pomoall="sudo ~/.dotfiles/scripts/scripts/rust_can_make_you_focus coding"
-alias pomostudy="sudo ~/.dotfiles/scripts/scripts/rust_can_make_you_focus studying"
-alias pomostudyyt="sudo ~/.dotfiles/scripts/scripts/rust_can_make_you_focus studying_yt"
+alias pomocode="sudo ~/dotfiles/scripts/scripts/rust_can_make_you_focus coding"
+alias pomocodeyt="sudo ~/dotfiles/scripts/scripts/rust_can_make_you_focus coding_yt"
+alias pomoall="sudo ~/dotfiles/scripts/scripts/rust_can_make_you_focus coding"
+alias pomostudy="sudo ~/dotfiles/scripts/scripts/rust_can_make_you_focus studying"
+alias pomostudyyt="sudo ~/dotfiles/scripts/scripts/rust_can_make_you_focus studying_yt"
 
 # kubectl
 alias k="kubectl"
@@ -35,7 +35,7 @@ alias kgp="kubectl get pods"
 alias kgpw="kubectl get pods -o wide"
 
 # linux commands on macOS
-alias watch="~/.dotfiles/scripts/scripts/watch.sh"
+alias watch="~/dotfiles/scripts/scripts/watch.sh"
 
 
 # # Enable zsh completion system (if not already enabled)
