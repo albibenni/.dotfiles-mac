@@ -8,7 +8,6 @@ export TERMINAL=ghostty
 
 
 PERSONAL=$XDG_CONFIG_HOME/personal
-source $PERSONAL/env
 for i in `find -L $PERSONAL`; do
     source $i
 done
