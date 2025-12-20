@@ -2,8 +2,8 @@
 [[ $- != *i* ]] && return
 
 #NOTE: Enable bash completion
-if [ -f /usr/share/bash-completion/bash_completion ]; then
-    source /usr/share/bash-completion/bash_completion
+if [[ -f /opt/homebrew/etc/profile.d/bash_completion.sh ]]; then
+    source /opt/homebrew/etc/profile.d/bash_completion.sh
 fi
 
 # NOTE: SHELL
@@ -11,10 +11,16 @@ if [ -f ~/.config/bash/shell.sh ]; then
     source ~/.config/bash/shell.sh
 fi
 
+# NOTE: ENVS (must be before init to set PATH and XDG_CONFIG_HOME)
+if [ -f ~/.config/bash/bash_envs.sh ]; then
+    source ~/.config/bash/bash_envs.sh
+fi
+
 # NOTE: alias
 if [ -f ~/.config/bash/bash_alias.sh ]; then
     source ~/.config/bash/bash_alias.sh
 fi
+
 # NOTE: init
 if [ -f ~/.config/bash/bash_init.sh ]; then
     source ~/.config/bash/bash_init.sh
@@ -27,10 +33,9 @@ for i in $(find -L $PERSONAL -type f); do
     source $i
 done
 
-# NOTE: ENVS
-if [ -f ~/.config/bash/bash_envs.sh ]; then
-    source ~/.config/bash/bash_envs.sh
-fi
+addToPathFront $HOME/.config/scripts
+addToPathFront $HOME/.local/bin
+addToPathFront $HOME/.local/share/bin
 
 # NOTE: bind from set
 [[ $- == *i* ]] && bind -f ~/.config/bash/inputrc
@@ -42,11 +47,11 @@ if [ -f ~/.config/bash/bash_bind.sh ]; then
 fi
 
 #NOTE: Enable fzf key bindings and fuzzy completion
-if [ -f /usr/share/fzf/completion.bash ]; then
-    source /usr/share/fzf/completion.bash
+if [ -f /opt/homebrew/opt/fzf/shell/completion.bash ]; then
+    source /opt/homebrew/opt/fzf/shell/completion.bash
 fi
-if [ -f /usr/share/fzf/key-bindings.bash ]; then
-    source /usr/share/fzf/key-bindings.bash
+if [ -f /opt/homebrew/opt/fzf/shell/key-bindings.bash ]; then
+    source /opt/homebrew/opt/fzf/shell/key-bindings.bash
 fi
 
 # Load kubectl completion for bash (only if kubectl is installed)
@@ -59,7 +64,7 @@ fi
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
 echo "Hello $USER"
-fastfetch
+# neofetch
 
 # Disable terminal flow control (Ctrl+s/Ctrl+q) so we can use Ctrl+s
-stty -ixon
+[[ -t 0 ]] && stty -ixon
