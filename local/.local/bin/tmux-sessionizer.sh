@@ -22,7 +22,11 @@ if ! tmux has-session -t="$session_name" 2> /dev/null; then
     tmux new-session -ds "$session_name" -c "$session"
 fi
 
-tmux switch-client -t "$session_name"
+if [[ -z $TMUX ]]; then
+    tmux attach-session -t "$session_name"
+else
+    tmux switch-client -t "$session_name"
+fi
 
 # This script will find all directories in the home directory,  ~/benni-projects/ , and  ~/work-projects/  and pipe them into  fzf . When you select a directory, it will create a new tmux session with the name of the directory and switch to it.
 # You can also use  fzf  to select a tmux session to switch to.
