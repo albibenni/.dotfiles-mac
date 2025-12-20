@@ -3,9 +3,9 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 
 #NOTE: codes
-alias vim=nvim
-alias pn=pnpm
-alias python=python3
+alias vim="nvim"
+alias pn="pnpm"
+alias python="python3"
 
 #NOTE: move
 alias cdd="cd ~/dotfiles/"
