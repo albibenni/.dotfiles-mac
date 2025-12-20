@@ -1,3 +1,6 @@
+# Initialize Homebrew environment
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 VIM="nvim"
 
 export XDG_CONFIG_HOME=$HOME/.config
@@ -29,9 +32,6 @@ export PATH=$HOME/.cargo/bin:$PATH
 
 export PATH="$N_PREFIX/bin:$PATH"
 
-addToPathFront $HOME/.config/scripts
-addToPathFront $HOME/.local/bin
-addToPathFront $HOME/.local/share/bin
 
 # addToPathFront $HOME/go/bin
 
