@@ -18,7 +18,7 @@ export CC="clang"
 export CXX="clang++"
 export GOPATH=$HOME/go
 export GIT_EDITOR=$VIM
-export N_PREFIX="$HOME/.local/n"
+# export N_PREFIX="$HOME/.local/n"
 export DOTFILES=$HOME/dotfiles
 
 ## FZF customization
@@ -30,7 +30,7 @@ export FZF_COMPLETION_TRIGGER='**'
 export PATH=~/.local/bin/:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
 
-export PATH="$N_PREFIX/bin:$PATH"
+# export PATH="$N_PREFIX/bin:$PATH"
 
 
 # addToPathFront $HOME/go/bin

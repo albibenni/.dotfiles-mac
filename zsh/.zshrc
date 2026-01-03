@@ -103,3 +103,8 @@ eval "$(zoxide init zsh)"
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="/Users/benni/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+
+# fnm
+eval "$(fnm env --use-on-cd)"
+eval "$(fnm completions --shell zsh)"
+
