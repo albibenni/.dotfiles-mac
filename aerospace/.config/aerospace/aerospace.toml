@@ -13,8 +13,7 @@ after-login-command = []
 
 # ff is required for the color code to be encode by borders??
 after-startup-command = [
-  'exec-and-forget borders active_color=0xffcc9900 width=10.0 inactive_color=0xff494d64 width=5.0'
-#'exec-and-forget /run/current-system/sw/bin/borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=11.0'
+  # 'exec-and-forget borders active_color=0xffcc9900 width=10.0 inactive_color=0xff494d64 width=5.0'
 ]
 
 # Start AeroSpace at login
@@ -180,10 +179,14 @@ if.app-id = 'com.spotify.client'
 run = "move-node-to-workspace 8"
 [[on-window-detected]]
 if.app-id = 'net.whatsapp.WhatsApp'
-run = "move-node-to-workspace 8"
+run = "move-node-to-workspace 7"
+[[on-window-detected]]
+if.app-id = 'com.hnc.Discord'
+run = 'move-node-to-workspace 7'
 [[on-window-detected]]
 if.app-id = 'com.microsoft.Outlook'
 run = "move-node-to-workspace 9"
 [[on-window-detected]]
 if.app-id = 'com.microsoft.teams2'
-run = ['move-node-to-workspace 9']
+run = 'move-node-to-workspace 6'
+
