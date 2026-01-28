@@ -2,6 +2,10 @@ if command -v mise &>/dev/null; then
     eval "$(mise activate bash)"
 fi
 
+if command -v fnm &>/dev/null; then
+    eval "$(fnm env --use-on-cd)"
+fi
+
 if command -v starship &>/dev/null; then
     eval "$(starship init bash)"
 fi
@@ -10,10 +14,13 @@ if command -v zoxide &>/dev/null; then
     eval "$(zoxide init bash)"
 fi
 
-# fnm
-if command -v fnm &>/dev/null; then
-    eval "$(fnm env --use-on-cd)"
-    eval "$(fnm completions --shell bash)"
+if command -v fzf &>/dev/null; then
+    if [[ -f /usr/share/fzf/completion.bash ]]; then
+        source /usr/share/fzf/completion.bash
+    fi
+    if [[ -f /usr/share/fzf/key-bindings.bash ]]; then
+        source /usr/share/fzf/key-bindings.bash
+    fi
 fi
 # INSTALL NODE:
 
