@@ -68,3 +68,11 @@ echo "Hello $USER"
 
 # Disable terminal flow control (Ctrl+s/Ctrl+q) so we can use Ctrl+s
 [[ -t 0 ]] && stty -ixon
+
+# pnpm
+export PNPM_HOME="/Users/benni/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
