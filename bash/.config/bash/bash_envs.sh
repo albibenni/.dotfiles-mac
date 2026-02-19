@@ -26,9 +26,9 @@ export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border"
 # Use ** trigger for fzf completion (type ** then TAB for fuzzy file search)
 export FZF_COMPLETION_TRIGGER='**'
 
-# lua5.1
 export PATH=~/.local/bin/:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
+export PATH=$HOME/go/bin:$PATH
 
 # export PATH="$N_PREFIX/bin:$PATH"
 
