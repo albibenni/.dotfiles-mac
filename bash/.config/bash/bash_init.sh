@@ -11,7 +11,9 @@ if command -v starship &>/dev/null; then
 fi
 
 if command -v zoxide &>/dev/null; then
+    shopt -s autocd
     eval "$(zoxide init bash)"
+    # eval "$(zoxide init bash --cmd cd)"
 fi
 
 if command -v fzf &>/dev/null; then
