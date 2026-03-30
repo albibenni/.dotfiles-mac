@@ -9,10 +9,13 @@ igemini(){
     npm install -g @google/gemini-cli
 }
 
-# cclaude(){
-#     iclaude
-#     claude
-# }
+icodex(){
+    npm i -g @openai/codex
+}
+
+cdx(){
+    codex
+}
 
 cld(){
     claude
