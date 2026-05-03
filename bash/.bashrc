@@ -76,3 +76,6 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+# Alias for new-project-tui
+alias new='new-project-tui'
