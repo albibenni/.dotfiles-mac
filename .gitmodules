@@ -4,3 +4,9 @@
 [submodule "git"]
 	path = git
 	url = git@github.com:albibenni/git-config.git
+[submodule "skills"]
+	path = agent/.config/agent/skills
+	url = git@github.com:albibenni/skills.git
+[submodule "agent/.config/agent/skills"]
+	path = agent/.config/agent/skills
+	url = git@github.com:albibenni/skills.git
