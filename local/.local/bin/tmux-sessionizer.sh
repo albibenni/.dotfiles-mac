@@ -3,7 +3,7 @@
 if [[ $# -eq 1 ]]; then
     session=$1
 else
-    session=$(find ~ ~/benni-projects/ ~/work-projects/ -mindepth 1 -maxdepth 2 -type d | fzf)
+    session=$(find ~ ~/benni-projects/ ~/work-projects/ -mindepth 1 -maxdepth 2 -name 'jdtls-data' -prune -o -type d -print | fzf)
 fi
 
 if [[ -z $session ]]; then
