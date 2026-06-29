@@ -1,0 +1,26 @@
+{
+  "mcpServers": {
+    "grep": {
+      "url": "http://mcp.grep.app",
+      "type": "http"
+    },
+    "upstash-context7": {
+      "command": "/Users/benni/.local/share/fnm/node-versions/v24.13.0/installation/bin/node",
+      "args": [
+        "/Users/benni/.local/share/fnm/node-versions/v24.13.0/installation/bin/npx",
+        "-y",
+        "@upstash/context7-mcp@latest"
+      ],
+      "env": {
+        "CONTEXT7_API_KEY": "__API_KEY_PLACEHOLDER__"
+      }
+    },
+    "weather-mcp": {
+      "command": "node",
+      "args": [
+        "--experimental-strip-types",
+        "/Users/benni/benni-projects/ts-is-fun/src/mcp/mcp.ts"
+      ]
+    }
+  }
+}
