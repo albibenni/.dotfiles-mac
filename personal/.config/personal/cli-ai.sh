@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
 
-uclaude() {
-    npm install -g @anthropic-ai/claude-code
+iclaude() {
+    curl -fsSL https://claude.ai/install.sh | bash
 }
-
-cclaude() {
+cld() {
     uclaude
     claude
 }
