@@ -4,7 +4,6 @@ iclaude() {
     curl -fsSL https://claude.ai/install.sh | bash
 }
 cld() {
-    uclaude
     claude
 }
 
