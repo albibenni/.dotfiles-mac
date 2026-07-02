@@ -79,3 +79,7 @@ esac
 
 # Alias for new-project-tui
 alias new='new-project-tui'
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/benni/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
