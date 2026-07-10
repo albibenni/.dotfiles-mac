@@ -29,12 +29,13 @@ install-agy() {
 }
 
 # AI Tracker Launcher
-ai-tracker() {
-    echo "Starting AI Tracker on http://localhost:14832... (Press Ctrl+C to stop)"
-
-    # Open the browser in the background after a 2 second delay to let the server boot
-    (sleep 2 && open http://localhost:14832) &
-
-    # Navigate to the project directory and start the Next.js dev server in the foreground
-    cd /Users/benni/benni-projects/ai-tracker && npm run dev
+iai-tracker() {
+    # echo "Starting AI Tracker on http://localhost:14832... (Press Ctrl+C to stop)"
+    #
+    # # Open the browser in the background after a 2 second delay to let the server boot
+    # (sleep 2 && open http://localhost:14832) &
+    #
+    # # Navigate to the project directory and start the Next.js dev server in the foreground
+    # cd /Users/benni/benni-projects/ai-tracker && npm run dev
+    pnpm add -g ai-tracker
 }
