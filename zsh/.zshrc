@@ -66,13 +66,7 @@ DISABLE_MAGIC_FUNCTIONS=true
 source $ZSH/oh-my-zsh.sh
 source ~/.zsh_profile
 
-# pnpm
-export PNPM_HOME="/Users/benni/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
+
 # bun completions
 [ -s "/Users/benni/.bun/_bun" ] && source "/Users/benni/.bun/_bun"
 

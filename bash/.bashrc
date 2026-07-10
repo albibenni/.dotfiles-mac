@@ -69,17 +69,17 @@ echo "Hello $USER"
 # Disable terminal flow control (Ctrl+s/Ctrl+q) so we can use Ctrl+s
 [[ -t 0 ]] && stty -ixon
 
-# pnpm
-export PNPM_HOME="/Users/benni/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
-
 # Alias for new-project-tui
 alias new='new-project-tui'
 
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="/Users/benni/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+
+# pnpm
+export PNPM_HOME="/Users/benni/Library/pnpm"
+case ":$PATH:" in
+*":$PNPM_HOME/bin:"*) ;;
+*) export PATH="$PNPM_HOME/bin:$PATH" ;;
+esac
+# pnpm end
