@@ -5,9 +5,9 @@
       "type": "http"
     },
     "upstash-context7": {
-      "command": "/Users/benni/.local/share/fnm/node-versions/v24.13.0/installation/bin/node",
+      "command": "/Users/benni/.local/share/mise/shims/node",
       "args": [
-        "/Users/benni/.local/share/fnm/node-versions/v24.13.0/installation/bin/npx",
+        "/Users/benni/.local/share/mise/shims/npx",
         "-y",
         "@upstash/context7-mcp@latest"
       ],

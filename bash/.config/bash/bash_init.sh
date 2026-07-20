@@ -2,10 +2,6 @@ if command -v mise &>/dev/null; then
     eval "$(mise activate bash)"
 fi
 
-if command -v fnm &>/dev/null; then
-    eval "$(fnm env --use-on-cd)"
-fi
-
 if command -v starship &>/dev/null; then
     eval "$(starship init bash)"
 fi
@@ -24,6 +20,3 @@ if command -v fzf &>/dev/null; then
         source /usr/share/fzf/key-bindings.bash
     fi
 fi
-# INSTALL NODE:
-
-# fnm install --lts
