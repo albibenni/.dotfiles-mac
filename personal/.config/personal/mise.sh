@@ -1,7 +1,7 @@
 # Function to update all global languages managed by mise
 update_mise_langs() {
     echo "🔄 Updating mise itself and its plugins..."
-    mise self-update -y || echo "mise is already up to date or installed via brew."
+    brew upgrade mise || echo "mise is already up to date."
     mise plugin update
 
     echo "🚀 Installing and setting the latest versions globally..."
@@ -9,6 +9,18 @@ update_mise_langs() {
     mise use -g python@latest
     mise use -g go@latest
     mise use -g java@latest
+    mise use -g golangci-lint@latest
+    mise use -g maven@latest
+
+    if command -v rustup &> /dev/null; then
+        echo "🦀 Updating Rust via rustup..."
+        rustup update
+    fi
+
+    if command -v pipx &> /dev/null; then
+        echo "🐍 Updating global Python CLI tools via pipx..."
+        pipx upgrade-all
+    fi
 
     echo "🧹 Pruning old and unused versions to free up space..."
     mise prune -y

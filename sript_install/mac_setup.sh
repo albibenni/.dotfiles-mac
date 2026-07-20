@@ -48,7 +48,6 @@ PACKAGES=(
     yarn
     pipx
     mise
-    golangci-lint
     
     # CLI Utilities
     neovim
@@ -66,6 +65,7 @@ PACKAGES=(
     tree-sitter-cli
     luarocks
     jq
+    gnupg
     thezoraiz/ascii-image-converter/ascii-image-converter
     
     # K8s (if needed)
@@ -114,9 +114,23 @@ if command -v mise &> /dev/null; then
     mise use -g python@latest
     mise use -g go@latest
     mise use -g java@latest
-    echo "✅ Global versions of Node, Python, Go, and Java installed via mise."
+    mise use -g golangci-lint@latest
+    mise use -g maven@latest
+    echo "✅ Global versions of Node, Python, Go, Java, and tools installed via mise."
 else
     echo "⚠️ mise is not installed. Skipping language setup."
+fi
+
+# ==========================================
+# 4. Setup Rust (via rustup)
+# ==========================================
+echo "🦀 Setting up Rust..."
+if ! command -v cargo &> /dev/null; then
+    echo "Installing Rust via rustup..."
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+else
+    echo "✅ Rust is already installed. Updating..."
+    rustup update
 fi
 
 # ==========================================
