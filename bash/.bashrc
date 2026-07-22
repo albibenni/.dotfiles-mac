@@ -26,6 +26,11 @@ if [ -f ~/.config/bash/bash_init.sh ]; then
     source ~/.config/bash/bash_init.sh
 fi
 
+# NOTE: secrets
+if [ -f ~/.config/bash/bash_secrets.sh ]; then
+    source ~/.config/bash/bash_secrets.sh
+fi
+
 # NOTE: source scripts
 PERSONAL=$XDG_CONFIG_HOME/personal
 # scripts functions auto sourced
