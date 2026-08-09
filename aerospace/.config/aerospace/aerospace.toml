@@ -164,7 +164,7 @@ cmd-ctrl-l= 'resize smart +50'
 7 = ['JAPANNEXT MNT','Mi Monitor','BenQ EW3270U','LG ULTRAGEAR']
 8 = ['JAPANNEXT MNT','Mi Monitor','BenQ EW3270U','LG ULTRAGEAR']
 9 = ['JAPANNEXT MNT','Mi Monitor','BenQ EW3270U','LG ULTRAGEAR']
-10 = ['LG ULTRAGEAR','Built-in Retina Display', 'LG HDR WFHD','Mi Monitor Ex','BenQ RD280U','BenQ EW3270U']
+10 = ['Built-in Retina Display', 'LG HDR WFHD','Mi Monitor Ex','BenQ RD280U','BenQ EW3270U']
 
 
 # 'service' binding mode declaration.
