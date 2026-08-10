@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 igpt() {
-    npm i -g @openai/codex
+    pnpm i -g @openai/codex
 }
 
 cdx() {
