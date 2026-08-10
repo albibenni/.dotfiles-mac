@@ -3,11 +3,12 @@
 igpt() {
     npm i -g @openai/codex
 }
+
 cdx() {
-    if command -v cdx >/dev/null 2>&1; then
-        command cdx "$@"
+    if command -v codex >/dev/null 2>&1; then
+        command codex "$@"
     else
-        echo "Codex CLI (cdx) not found. Run 'igpt' to install."
+        echo "Codex CLI (codex) not found. Run 'igpt' to install."
     fi
 }
 
