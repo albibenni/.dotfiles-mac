@@ -3,6 +3,13 @@
 igpt() {
     npm i -g @openai/codex
 }
+cdx() {
+    if command -v cdx >/dev/null 2>&1; then
+        command cdx "$@"
+    else
+        echo "Codex CLI (cdx) not found. Run 'igpt' to install."
+    fi
+}
 
 iclaude() {
     curl -fsSL https://claude.ai/install.sh | bash
