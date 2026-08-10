@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+igpt() {
+    npm i -g @openai/codex
+}
+
 iclaude() {
     curl -fsSL https://claude.ai/install.sh | bash
 }
