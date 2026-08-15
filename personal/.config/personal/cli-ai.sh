@@ -1,21 +1,11 @@
 #!/usr/bin/env bash
 
-igpt() {
-    curl -fsSL https://chatgpt.com/codex/install.sh | sh
+uclaude() {
+    npm install -g @anthropic-ai/claude-code
 }
 
-cdx() {
-    if command -v codex >/dev/null 2>&1; then
-        command codex "$@"
-    else
-        echo "Codex CLI (codex) not found. Run 'igpt' to install."
-    fi
-}
-
-iclaude() {
-    curl -fsSL https://claude.ai/install.sh | bash
-}
-cld() {
+cclaude() {
+    uclaude
     claude
 }
 
@@ -40,14 +30,15 @@ install-agy() {
     curl -fsSL https://antigravity.google/cli/install.sh | bash
 }
 
-# AI Tracker Launcher
-iai-tracker() {
-    # echo "Starting AI Tracker on http://localhost:14832... (Press Ctrl+C to stop)"
-    #
-    # # Open the browser in the background after a 2 second delay to let the server boot
-    # (sleep 2 && open http://localhost:14832) &
-    #
-    # # Navigate to the project directory and start the Next.js dev server in the foreground
-    # cd /Users/benni/benni-projects/ai-tracker && npm run dev
-    pnpm add -g ai-tracker
+# CODEX
+igpt() {
+    curl -fsSL https://chatgpt.com/codex/install.sh | sh
+}
+
+cdx() {
+    if command -v codex >/dev/null 2>&1; then
+        command codex "$@"
+    else
+        echo "Codex CLI (codex) not found. Run 'igpt' to install."
+    fi
 }
