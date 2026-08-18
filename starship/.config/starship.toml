@@ -1,5 +1,5 @@
 add_newline = true
-command_timeout = 1000
+command_timeout = 500
 format = """
 [┌─](bold cyan)\
 $username\
@@ -12,6 +12,7 @@ $nodejs\
 $rust\
 $golang\
 $lua\
+$mise\
 $docker_context\
 $kubernetes\
 $cmd_duration\
@@ -19,19 +20,19 @@ $time
 [└─](bold cyan)$character"""
 
 [character]
-error_symbol = "[✗](bold cyan)"
+error_symbol = "[✗](bold red)"
 success_symbol = "[❯](bold cyan)"
 
 [directory]
 truncation_length = 2
 truncation_symbol = "…/"
-repo_root_style = "bold red"
-repo_root_format = " [$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style) "
+repo_root_style = "bold cyan"
+repo_root_format = "[$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style) "
 
 [git_branch]
-style = 'fg:green'
-symbol = ' '
-format = '[on](white) [$symbol$branch ]($style)'
+symbol = " "
+format = "[on](white) [$symbol$branch]($style) "
+style = "italic green"
 
 [git_status]
 format     = '[$all_status$ahead_behind]($style)'
@@ -39,19 +40,25 @@ style      = "bold red"
 ahead      = "⇡${count} "
 diverged   = "⇕⇡${ahead_count}⇣${behind_count} "
 behind     = "⇣${count} "
-conflicted = "x "
-up_to_date = ""
-untracked  = "! "
-modified   = ""
-stashed    = ""
-staged     = ""
-renamed    = ""
-deleted    = ""
+conflicted = " "
+up_to_date = " "
+untracked  = "? "
+modified   = "! "
+stashed    = '\$ '
+staged     = "+ "
+renamed    = "» "
+deleted    = "✘ "
+
+[mise]
+disabled = false
+format = "on [$symbol$health]($style) "
+symbol = "mise "
+style = "bold purple"
 
 # Show command duration if > 2 seconds
 [cmd_duration]
 min_time = 2_000
-format = "took [$duration](bold yellow) "
+format = "took [$duration](bold cyan) "
 
 # Python version
 [python]
@@ -82,16 +89,21 @@ style = "cyan"
 
 # Kubernetes context
 [kubernetes]
-disabled = true
-format = '[☸  $context](bold blue) '
+disabled = false
+format = 'on [$symbol$context( \($namespace\))]($style) '
+style = "bold blue"
+detect_files = ["kustomization.yaml", "kustomization.yml", "Chart.yaml", "helmfile.yaml"]
+
+[[kubernetes.contexts]]
+context_pattern = ".*(prod|production).*"
+style = "bold red"
 
 # Docker context
 [docker_context]
 symbol = ' '
-style = 'fg:#06969A'
-format = '[$symbol]($style) $path'
-detect_files = ['docker-compose.yml', 'docker-compose.yaml', 'Dockerfile']
-detect_extensions = ['Dockerfile']
+style = "fg:#06969A"
+format = "via [$symbol$context]($style) "
+detect_files = ["compose.yml", "compose.yaml", "docker-compose.yml", "docker-compose.yaml", "Dockerfile"]
 
 [time]
 disabled = false
