@@ -6,6 +6,10 @@ if [[ -f /opt/homebrew/etc/profile.d/bash_completion.sh ]]; then
     source /opt/homebrew/etc/profile.d/bash_completion.sh
 fi
 
+if [[ -f "$HOME/.config/theme-switcher/completions/theme.bash" ]]; then
+    source "$HOME/.config/theme-switcher/completions/theme.bash"
+fi
+
 # NOTE: SHELL
 if [ -f ~/.config/bash/shell.sh ]; then
     source ~/.config/bash/shell.sh

@@ -42,6 +42,10 @@ alias watch="~/dotfiles/scripts/scripts/watch.sh"
 autoload -Uz compinit
 compinit
 
+if [[ -f "$HOME/.config/theme-switcher/completions/theme.zsh" ]]; then
+  source "$HOME/.config/theme-switcher/completions/theme.zsh"
+fi
+
  # Load kubectl completion for zsh (only if kubectl is installed)
 if command -v kubectl &> /dev/null; then
   source <(kubectl completion zsh)
