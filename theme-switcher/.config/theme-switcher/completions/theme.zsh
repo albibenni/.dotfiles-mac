@@ -6,6 +6,7 @@ _theme_switcher() {
 	commands=(
 		'list:show available themes'
 		'current:show the active theme'
+		'borders:apply the current theme border color'
 		'validate:validate a theme name'
 		'set:apply a theme'
 	)

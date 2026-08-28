@@ -6,7 +6,7 @@ _theme_switcher() {
 	command="${COMP_WORDS[1]:-}"
 
 	if (( COMP_CWORD == 1 )); then
-		COMPREPLY=( $(compgen -W 'list current validate set' -- "$current") )
+		COMPREPLY=( $(compgen -W 'list current borders validate set' -- "$current") )
 		return
 	fi
 

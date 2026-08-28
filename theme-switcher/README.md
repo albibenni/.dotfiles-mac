@@ -35,4 +35,6 @@ theme current
 
 Ghostty and Neovim are configured to remain transparent for every profile.
 
+SwiftBorders follows each profile’s accent color. The switcher writes `~/.config/swiftborders/swiftbordersrc`, which SwiftBorders live-reloads; it starts SwiftBorders only if AeroSpace has not already started it. AeroSpace invokes `theme borders` on startup, so the saved theme’s border color is generated before SwiftBorders starts.
+
 The script updates VS Code's user `settings.json` only when the configured theme is installed. Quit VS Code first if you want to avoid a settings-write race.
