@@ -1,4 +1,5 @@
 theme = Catppuccin Mocha
+config-file = ?../theme-switcher/generated/ghostty.conf
 macos-titlebar-style = hidden
 background-opacity = 0.9
 font-family = CaskaydiaCove Nerd Font

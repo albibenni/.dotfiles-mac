@@ -1,0 +1,110 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+config_dir="${XDG_CONFIG_HOME:-$HOME/.config}/theme-switcher"
+config_file="${THEME_SWITCHER_CONFIG:-$config_dir/themes.conf}"
+state_dir="${THEME_SWITCHER_STATE_DIR:-$config_dir/generated}"
+state_file="$config_dir/current"
+vscode_settings="${VSCODE_SETTINGS_FILE:-$HOME/Library/Application Support/Code/User/settings.json}"
+
+usage() {
+	printf 'Usage: theme {list|current|validate <name>|set <name>}\n' >&2
+}
+
+theme_record() {
+	local requested="$1"
+	[[ -f "$config_file" ]] || { printf 'Theme configuration not found: %s\n' "$config_file" >&2; return 1; }
+	awk -F '|' -v requested="$requested" '$0 !~ /^[[:space:]]*(#|$)/ && $1 == requested { print; exit }' "$config_file"
+}
+
+require_theme() {
+	local record
+	record=$(theme_record "$1")
+	[[ -n "$record" ]] || { printf 'Unknown theme: %s\n' "$1" >&2; return 1; }
+	printf '%s\n' "$record"
+}
+
+list_themes() {
+	[[ -f "$config_file" ]] || { printf 'Theme configuration not found: %s\n' "$config_file" >&2; return 1; }
+	awk -F '|' '$0 !~ /^[[:space:]]*(#|$)/ { print $1 }' "$config_file"
+}
+
+write_generated_files() {
+	local ghostty_theme="$1" tmux_flavor="$2"
+	mkdir -p "$state_dir"
+	printf 'theme = %s\n' "$ghostty_theme" > "$state_dir/ghostty.conf"
+	printf 'set -g @catppuccin_flavor "%s"\n' "$tmux_flavor" > "$state_dir/tmux.conf"
+}
+
+set_macos_appearance() {
+	local appearance="$1" dark_mode=false
+	[[ "$appearance" == dark ]] && dark_mode=true
+	if command -v osascript >/dev/null 2>&1; then
+		osascript -e "tell application \"System Events\" to tell appearance preferences to set dark mode to $dark_mode" || printf 'Warning: could not update macOS appearance.\n' >&2
+	fi
+}
+
+set_wallpaper() {
+	local wallpaper="$1"
+	wallpaper=${wallpaper//\$HOME/$HOME}
+	if [[ ! -f "$wallpaper" ]]; then
+		printf 'Warning: wallpaper not found; leaving it unchanged: %s\n' "$wallpaper" >&2
+		return
+	fi
+	osascript - "$wallpaper" <<'APPLESCRIPT' || printf 'Warning: could not update the wallpaper.\n' >&2
+on run argv
+	tell application "System Events"
+		tell every desktop to set picture to item 1 of argv
+	end tell
+end run
+APPLESCRIPT
+}
+
+refresh_tmux() {
+	if command -v tmux >/dev/null 2>&1 && tmux has-session 2>/dev/null; then
+		tmux source-file "$state_dir/tmux.conf"
+		tmux source-file "$HOME/.config/tmux/plugins/tmux/catppuccin_tmux.conf"
+		tmux refresh-client -S
+	fi
+}
+
+refresh_neovim() {
+	local runtime_dir="${TMPDIR:-/tmp}" socket
+	command -v nvim >/dev/null 2>&1 || return
+	while IFS= read -r -d '' socket; do
+		nvim --server "$socket" --remote-send '<Cmd>lua require("benni.theme").apply()<CR>' >/dev/null 2>&1 || true
+	done < <(find "$runtime_dir" -type s -name 'nvim.*' -print0 2>/dev/null)
+}
+
+set_vscode_theme() {
+	local theme="$1"
+	[[ -f "$vscode_settings" ]] || { printf 'Warning: VS Code settings not found; skipping.\n' >&2; return; }
+	if command -v code >/dev/null 2>&1 && ! code --list-extensions | grep -Fqx 'catppuccin.catppuccin-vsc'; then
+		printf 'Warning: install Catppuccin.catppuccin-vsc to update VS Code.\n' >&2
+		return
+	fi
+	THEME_VALUE="$theme" perl -0pi -e 's/("workbench\.colorTheme"\s*:\s*)"[^"]*"/$1 . qq{"} . $ENV{THEME_VALUE} . qq{"}/e' "$vscode_settings"
+}
+
+set_theme() {
+	local record name ghostty_theme tmux_flavor nvim_flavor vscode_theme appearance wallpaper
+	record=$(require_theme "$1")
+	IFS='|' read -r name ghostty_theme tmux_flavor nvim_flavor vscode_theme appearance wallpaper <<< "$record"
+	write_generated_files "$ghostty_theme" "$tmux_flavor"
+	printf '%s\n' "$name" > "$state_file"
+	set_macos_appearance "$appearance"
+	set_wallpaper "$wallpaper"
+	set_vscode_theme "$vscode_theme"
+	refresh_tmux
+	refresh_neovim
+	printf 'Applied theme: %s\n' "$name"
+}
+
+case "${1:-}" in
+	list) list_themes ;;
+	current) [[ -f "$state_file" ]] && cat "$state_file" || printf 'mocha\n' ;;
+	validate) [[ $# -eq 2 ]] || { usage; exit 2; }; require_theme "$2" >/dev/null ;;
+	set) [[ $# -eq 2 ]] || { usage; exit 2; }; set_theme "$2" ;;
+	*) usage; exit 2 ;;
+esac
