@@ -111,10 +111,10 @@ refresh_swiftborders() {
 		printf 'width=3.0\n'
 	} > "$swiftborders_config"
 
-	# SwiftBorders live-reloads this file. Start it only when AeroSpace has not already done so.
-	if ! pgrep -x swiftborders >/dev/null 2>&1; then
-		swiftborders >/dev/null 2>&1 &
-	fi
+	# A previous process may have been launched with color CLI arguments, which
+	# override this file. Restart it so the generated theme configuration wins.
+	pkill -x swiftborders >/dev/null 2>&1 || true
+	swiftborders >/dev/null 2>&1 &
 }
 
 refresh_current_swiftborders() {
