@@ -2,7 +2,7 @@
 
 This package provides a single `theme` command for the Catppuccin variants already used by tmux. It coordinates Ghostty, tmux, Neovim, VS Code, macOS appearance, Chrome/Brave's device appearance, and a per-theme wallpaper.
 
-The selectable profiles are Catppuccin Latte, Frappe, Macchiato, Mocha, Tokyo Night, and Night Owl. Tokyo Night and Night Owl use their native Ghostty, Neovim, and VS Code themes; tmux retains Catppuccin Mocha for those two profiles because the current tmux status configuration depends on Catppuccin's palette variables.
+The selectable profiles are Catppuccin Latte, Frappe, Macchiato, Mocha, Tokyo Night, Night Owl, and Custom. Tokyo Night and Night Owl use their native Ghostty, Neovim, and VS Code themes; tmux retains Catppuccin Mocha for those two profiles because the current tmux status configuration depends on Catppuccin's palette variables. Custom preserves the settings you had before this switcher: Catppuccin Mocha in Ghostty/tmux, your customized transparent Tokyo Night palette in Neovim, Night Owl in VS Code, and your previous wallpaper.
 
 ## Install
 
@@ -32,5 +32,7 @@ theme current
 ```
 
 `theme set` changes the persistent state first, then updates live tmux and available Neovim servers. Reload existing Ghostty windows with `cmd+shift+,`; reload VS Code windows with **Developer: Reload Window**. Wallpaper files are optional: a missing file produces a warning without changing the current wallpaper.
+
+Ghostty and Neovim are configured to remain transparent for every profile.
 
 The script updates VS Code's user `settings.json` only when the configured theme is installed. Quit VS Code first if you want to avoid a settings-write race.
