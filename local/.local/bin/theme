@@ -85,10 +85,6 @@ refresh_neovim() {
 set_vscode_theme() {
 	local theme="$1"
 	[[ -f "$vscode_settings" ]] || { printf 'Warning: VS Code settings not found; skipping.\n' >&2; return; }
-	if command -v code >/dev/null 2>&1 && ! code --list-extensions | grep -Fqx 'catppuccin.catppuccin-vsc'; then
-		printf 'Warning: install Catppuccin.catppuccin-vsc to update VS Code.\n' >&2
-		return
-	fi
 	THEME_VALUE="$theme" perl -0pi -e 's/("workbench\.colorTheme"\s*:\s*)"[^"]*"/$1 . qq{"} . $ENV{THEME_VALUE} . qq{"}/e' "$vscode_settings"
 }
 

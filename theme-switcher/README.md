@@ -1,8 +1,8 @@
 # macOS theme switcher
 
-This package provides a single `theme` command for the Catppuccin variants already used by tmux. It coordinates Ghostty, tmux, Neovim, VS Code, macOS appearance, Chrome/Brave's device appearance, and a per-theme wallpaper.
+This package provides a single `theme` command for the Catppuccin variants and selected Omarchy themes. It coordinates Ghostty, tmux, Neovim, VS Code, macOS appearance, Chrome/Brave's device appearance, and a per-theme wallpaper.
 
-The selectable profiles are Catppuccin Latte, Frappe, Macchiato, Mocha, Tokyo Night, Night Owl, and Custom. Tokyo Night and Night Owl use their native Ghostty, Neovim, and VS Code themes; tmux retains Catppuccin Mocha for those two profiles because the current tmux status configuration depends on Catppuccin's palette variables. Custom preserves the settings you had before this switcher: Catppuccin Mocha in Ghostty/tmux, your customized transparent Tokyo Night palette in Neovim, Night Owl in VS Code, and your previous wallpaper.
+The selectable profiles include Lumon, Ethereal, Everforest, Gruvbox, Miasma, Hackerman, Osaka Jade, Kanagawa, Nord, Matte Black, Vantablack, Ristretto, Retro 82, dark Rosé Pine, and White. Omarchy profiles retain Catppuccin's Mocha tmux flavor because the current tmux status configuration depends on Catppuccin palette variables. Neovim applies each Omarchy profile's background, foreground, and accent palette without requiring additional plugins.
 
 ## Install
 
@@ -37,4 +37,4 @@ Ghostty and Neovim are configured to remain transparent for every profile.
 
 SwiftBorders follows each profile’s accent color. The switcher writes `~/.config/swiftborders/swiftbordersrc` and restarts SwiftBorders so old command-line color arguments cannot override the selected theme. AeroSpace invokes `theme borders` on startup, so the saved theme’s border color is generated before SwiftBorders starts.
 
-The script updates VS Code's user `settings.json` only when the configured theme is installed. Quit VS Code first if you want to avoid a settings-write race.
+The script updates VS Code's user `settings.json` to the profile's configured theme name. Install that theme in VS Code first, and quit VS Code before switching if you want to avoid a settings-write race.
