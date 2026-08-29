@@ -109,6 +109,7 @@ refresh_swiftborders() {
 		printf 'active_color=%s\n' "$swiftborders_color"
 		printf 'inactive_color=0xff494d64\n'
 		printf 'width=3.0\n'
+		printf 'order=above\n'
 	} > "$swiftborders_config"
 
 	# A previous process may have been launched with color CLI arguments, which
