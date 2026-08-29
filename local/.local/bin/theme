@@ -10,54 +10,63 @@ vscode_settings="${VSCODE_SETTINGS_FILE:-$HOME/Library/Application Support/Code/
 swiftborders_config="${SWIFTBORDERS_CONFIG_FILE:-$HOME/.config/swiftborders/swiftbordersrc}"
 
 usage() {
-	printf 'Usage: theme {list|current|borders|validate <name>|set <name>}\n' >&2
+    printf 'Usage: theme {list|current|borders|validate <name>|set <name>}\n' >&2
 }
 
 current_theme() {
-	[[ -f "$state_file" ]] && cat "$state_file" || printf 'mocha\n'
+    [[ -f "$state_file" ]] && cat "$state_file" || printf 'mocha\n'
 }
 
 theme_record() {
-	local requested="$1"
-	[[ -f "$config_file" ]] || { printf 'Theme configuration not found: %s\n' "$config_file" >&2; return 1; }
-	awk -F '|' -v requested="$requested" '$0 !~ /^[[:space:]]*(#|$)/ && $1 == requested { print; exit }' "$config_file"
+    local requested="$1"
+    [[ -f "$config_file" ]] || {
+        printf 'Theme configuration not found: %s\n' "$config_file" >&2
+        return 1
+    }
+    awk -F '|' -v requested="$requested" '$0 !~ /^[[:space:]]*(#|$)/ && $1 == requested { print; exit }' "$config_file"
 }
 
 require_theme() {
-	local record
-	record=$(theme_record "$1")
-	[[ -n "$record" ]] || { printf 'Unknown theme: %s\n' "$1" >&2; return 1; }
-	printf '%s\n' "$record"
+    local record
+    record=$(theme_record "$1")
+    [[ -n "$record" ]] || {
+        printf 'Unknown theme: %s\n' "$1" >&2
+        return 1
+    }
+    printf '%s\n' "$record"
 }
 
 list_themes() {
-	[[ -f "$config_file" ]] || { printf 'Theme configuration not found: %s\n' "$config_file" >&2; return 1; }
-	awk -F '|' '$0 !~ /^[[:space:]]*(#|$)/ { print $1 }' "$config_file"
+    [[ -f "$config_file" ]] || {
+        printf 'Theme configuration not found: %s\n' "$config_file" >&2
+        return 1
+    }
+    awk -F '|' '$0 !~ /^[[:space:]]*(#|$)/ { print $1 }' "$config_file"
 }
 
 write_generated_files() {
-	local ghostty_theme="$1" tmux_flavor="$2"
-	mkdir -p "$state_dir"
-	printf 'theme = %s\n' "$ghostty_theme" > "$state_dir/ghostty.conf"
-	printf 'set -g @catppuccin_flavor "%s"\n' "$tmux_flavor" > "$state_dir/tmux.conf"
+    local ghostty_theme="$1" tmux_flavor="$2"
+    mkdir -p "$state_dir"
+    printf 'theme = %s\n' "$ghostty_theme" >"$state_dir/ghostty.conf"
+    printf 'set -g @catppuccin_flavor "%s"\n' "$tmux_flavor" >"$state_dir/tmux.conf"
 }
 
 set_macos_appearance() {
-	local appearance="$1" dark_mode=false
-	[[ "$appearance" == dark ]] && dark_mode=true
-	if command -v osascript >/dev/null 2>&1; then
-		osascript -e "tell application \"System Events\" to tell appearance preferences to set dark mode to $dark_mode" || printf 'Warning: could not update macOS appearance.\n' >&2
-	fi
+    local appearance="$1" dark_mode=false
+    [[ "$appearance" == dark ]] && dark_mode=true
+    if command -v osascript >/dev/null 2>&1; then
+        osascript -e "tell application \"System Events\" to tell appearance preferences to set dark mode to $dark_mode" || printf 'Warning: could not update macOS appearance.\n' >&2
+    fi
 }
 
 set_wallpaper() {
-	local wallpaper="$1"
-	wallpaper=${wallpaper//\$HOME/$HOME}
-	if [[ ! -f "$wallpaper" ]]; then
-		printf 'Warning: wallpaper not found; leaving it unchanged: %s\n' "$wallpaper" >&2
-		return
-	fi
-	osascript - "$wallpaper" <<'APPLESCRIPT' || printf 'Warning: could not update the wallpaper.\n' >&2
+    local wallpaper="$1"
+    wallpaper=${wallpaper//\$HOME/$HOME}
+    if [[ ! -f "$wallpaper" ]]; then
+        printf 'Warning: wallpaper not found; leaving it unchanged: %s\n' "$wallpaper" >&2
+        return
+    fi
+    osascript - "$wallpaper" <<'APPLESCRIPT' || printf 'Warning: could not update the wallpaper.\n' >&2
 on run argv
 	tell application "System Events"
 		tell every desktop to set picture to item 1 of argv
@@ -67,88 +76,109 @@ APPLESCRIPT
 }
 
 refresh_tmux() {
-	if command -v tmux >/dev/null 2>&1 && tmux has-session 2>/dev/null; then
-		tmux source-file "$state_dir/tmux.conf"
-		tmux source-file "$HOME/.config/tmux/plugins/tmux/catppuccin_tmux.conf"
-		tmux refresh-client -S
-	fi
+    if command -v tmux >/dev/null 2>&1 && tmux has-session 2>/dev/null; then
+        tmux source-file "$state_dir/tmux.conf"
+        tmux source-file "$HOME/.config/tmux/plugins/tmux/catppuccin_tmux.conf"
+        tmux refresh-client -S
+    fi
 }
 
 refresh_neovim() {
-	local runtime_dir="${TMPDIR:-/tmp}" socket
-	command -v nvim >/dev/null 2>&1 || return
-	while IFS= read -r -d '' socket; do
-		nvim --server "$socket" --remote-send '<Cmd>lua require("benni.theme").apply()<CR>' >/dev/null 2>&1 || true
-	done < <(find "$runtime_dir" -type s -name 'nvim.*' -print0 2>/dev/null)
+    local runtime_dir="${TMPDIR:-/tmp}" socket
+    command -v nvim >/dev/null 2>&1 || return
+    while IFS= read -r -d '' socket; do
+        nvim --server "$socket" --remote-send '<Cmd>lua require("benni.theme").apply()<CR>' >/dev/null 2>&1 || true
+    done < <(find "$runtime_dir" -type s -name 'nvim.*' -print0 2>/dev/null)
 }
 
 set_vscode_theme() {
-	local theme="$1"
-	[[ -f "$vscode_settings" ]] || { printf 'Warning: VS Code settings not found; skipping.\n' >&2; return; }
-	THEME_VALUE="$theme" perl -0pi -e 's/("workbench\.colorTheme"\s*:\s*)"[^"]*"/$1 . qq{"} . $ENV{THEME_VALUE} . qq{"}/e' "$vscode_settings"
+    local theme="$1"
+    [[ -f "$vscode_settings" ]] || {
+        printf 'Warning: VS Code settings not found; skipping.\n' >&2
+        return
+    }
+    THEME_VALUE="$theme" perl -0pi -e 's/("workbench\.colorTheme"\s*:\s*)"[^"]*"/$1 . qq{"} . $ENV{THEME_VALUE} . qq{"}/e' "$vscode_settings"
 }
 
 refresh_swiftborders() {
-	local active_color="$1" swiftborders_color
-	[[ "$active_color" =~ ^#[0-9A-Fa-f]{6}$ ]] || {
-		printf 'Warning: invalid SwiftBorders color: %s\n' "$active_color" >&2
-		return
-	}
-	command -v swiftborders >/dev/null 2>&1 || {
-		printf 'Warning: SwiftBorders is not installed; skipping.\n' >&2
-		return
-	}
-	swiftborders_color="0xff${active_color#\#}"
-	mkdir -p "$(dirname "$swiftborders_config")"
-	{
-		printf '# Generated by theme switcher; do not edit.\n'
-		printf 'active_color=%s\n' "$swiftborders_color"
-		printf 'inactive_color=0xff494d64\n'
-		printf 'width=3.0\n'
-		printf 'order=above\n'
-	} > "$swiftborders_config"
+    local active_color="$1" swiftborders_color
+    [[ "$active_color" =~ ^#[0-9A-Fa-f]{6}$ ]] || {
+        printf 'Warning: invalid SwiftBorders color: %s\n' "$active_color" >&2
+        return
+    }
+    command -v swiftborders >/dev/null 2>&1 || {
+        printf 'Warning: SwiftBorders is not installed; skipping.\n' >&2
+        return
+    }
+    swiftborders_color="0xff${active_color#\#}"
+    mkdir -p "$(dirname "$swiftborders_config")"
+    {
+        printf '# Generated by theme switcher; do not edit.\n'
+        printf 'active_color=%s\n' "$swiftborders_color"
+        printf 'inactive_color=0xff494d64\n'
+        printf 'width=2.5\n'
+        printf 'inactive_width=0\n'
+        # Keep the ring behind the target window. The window itself then clips the
+        # inner edge exactly to its native continuous corner shape.
+        printf 'order=below\n'
+    } >"$swiftborders_config"
 
-	# Use one Homebrew-managed instance. Stop its LaunchAgent first, then replace
-	# any AeroSpace/manual launch before starting a fresh service instance.
-	if command -v brew >/dev/null 2>&1; then
-		brew services stop swiftborders >/dev/null 2>&1 || true
-	fi
-	pkill -x swiftborders >/dev/null 2>&1 || true
-	if command -v brew >/dev/null 2>&1 && brew services start swiftborders >/dev/null 2>&1; then
-		return
-	fi
+    # Use one Homebrew-managed instance. Stop its LaunchAgent first, then replace
+    # any AeroSpace/manual launch before starting a fresh service instance.
+    if command -v brew >/dev/null 2>&1; then
+        brew services stop swiftborders >/dev/null 2>&1 || true
+    fi
+    pkill -x swiftborders >/dev/null 2>&1 || true
+    if command -v brew >/dev/null 2>&1 && brew services start swiftborders >/dev/null 2>&1; then
+        return
+    fi
 
-	# Fall back to a detached process when Homebrew services are unavailable.
-	nohup swiftborders >/dev/null 2>&1 &
+    # Fall back to a detached process when Homebrew services are unavailable.
+    nohup swiftborders >/dev/null 2>&1 &
 }
 
 refresh_current_swiftborders() {
-	local record name ghostty_theme tmux_flavor nvim_flavor vscode_theme appearance wallpaper swiftborders_active_color
-	record=$(require_theme "$(current_theme)")
-	IFS='|' read -r name ghostty_theme tmux_flavor nvim_flavor vscode_theme appearance wallpaper swiftborders_active_color <<< "$record"
-	refresh_swiftborders "$swiftborders_active_color"
+    local record name ghostty_theme tmux_flavor nvim_flavor vscode_theme appearance wallpaper swiftborders_active_color
+    record=$(require_theme "$(current_theme)")
+    IFS='|' read -r name ghostty_theme tmux_flavor nvim_flavor vscode_theme appearance wallpaper swiftborders_active_color <<<"$record"
+    refresh_swiftborders "$swiftborders_active_color"
 }
 
 set_theme() {
-	local record name ghostty_theme tmux_flavor nvim_flavor vscode_theme appearance wallpaper swiftborders_active_color
-	record=$(require_theme "$1")
-	IFS='|' read -r name ghostty_theme tmux_flavor nvim_flavor vscode_theme appearance wallpaper swiftborders_active_color <<< "$record"
-	write_generated_files "$ghostty_theme" "$tmux_flavor"
-	printf '%s\n' "$name" > "$state_file"
-	set_macos_appearance "$appearance"
-	set_wallpaper "$wallpaper"
-	set_vscode_theme "$vscode_theme"
-	refresh_swiftborders "$swiftborders_active_color"
-	refresh_tmux
-	refresh_neovim
-	printf 'Applied theme: %s\n' "$name"
+    local record name ghostty_theme tmux_flavor nvim_flavor vscode_theme appearance wallpaper swiftborders_active_color
+    record=$(require_theme "$1")
+    IFS='|' read -r name ghostty_theme tmux_flavor nvim_flavor vscode_theme appearance wallpaper swiftborders_active_color <<<"$record"
+    write_generated_files "$ghostty_theme" "$tmux_flavor"
+    printf '%s\n' "$name" >"$state_file"
+    set_macos_appearance "$appearance"
+    set_wallpaper "$wallpaper"
+    set_vscode_theme "$vscode_theme"
+    refresh_swiftborders "$swiftborders_active_color"
+    refresh_tmux
+    refresh_neovim
+    printf 'Applied theme: %s\n' "$name"
 }
 
 case "${1:-}" in
-	list) list_themes ;;
-	current) current_theme ;;
-	borders) refresh_current_swiftborders ;;
-	validate) [[ $# -eq 2 ]] || { usage; exit 2; }; require_theme "$2" >/dev/null ;;
-	set) [[ $# -eq 2 ]] || { usage; exit 2; }; set_theme "$2" ;;
-	*) usage; exit 2 ;;
+list) list_themes ;;
+current) current_theme ;;
+borders) refresh_current_swiftborders ;;
+validate)
+    [[ $# -eq 2 ]] || {
+        usage
+        exit 2
+    }
+    require_theme "$2" >/dev/null
+    ;;
+set)
+    [[ $# -eq 2 ]] || {
+        usage
+        exit 2
+    }
+    set_theme "$2"
+    ;;
+*)
+    usage
+    exit 2
+    ;;
 esac
