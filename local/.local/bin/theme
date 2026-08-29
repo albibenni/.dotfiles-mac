@@ -112,10 +112,18 @@ refresh_swiftborders() {
 		printf 'order=above\n'
 	} > "$swiftborders_config"
 
-	# A previous process may have been launched with color CLI arguments, which
-	# override this file. Restart it so the generated theme configuration wins.
+	# Use one Homebrew-managed instance. Stop its LaunchAgent first, then replace
+	# any AeroSpace/manual launch before starting a fresh service instance.
+	if command -v brew >/dev/null 2>&1; then
+		brew services stop swiftborders >/dev/null 2>&1 || true
+	fi
 	pkill -x swiftborders >/dev/null 2>&1 || true
-	swiftborders >/dev/null 2>&1 &
+	if command -v brew >/dev/null 2>&1 && brew services start swiftborders >/dev/null 2>&1; then
+		return
+	fi
+
+	# Fall back to a detached process when Homebrew services are unavailable.
+	nohup swiftborders >/dev/null 2>&1 &
 }
 
 refresh_current_swiftborders() {
