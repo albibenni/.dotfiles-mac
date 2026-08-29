@@ -118,6 +118,10 @@ refresh_swiftborders() {
         printf 'inactive_color=0xff494d64\n'
         printf 'width=2.5\n'
         printf 'inactive_width=0\n'
+        # Ghostty's visible window corner is tighter than Tahoe's 26 pt default.
+        printf 'radius=14\n'
+        # System Settings uses a larger custom window corner than Ghostty.
+        printf 'radius_overrides=System Settings:26\n'
         # Keep the ring behind the target window. The window itself then clips the
         # inner edge exactly to its native continuous corner shape.
         printf 'order=below\n'
