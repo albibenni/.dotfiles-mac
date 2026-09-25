@@ -104,6 +104,10 @@ outer.right =      8
 cmd-slash = 'layout tiles horizontal vertical'
 cmd-comma = 'layout accordion horizontal vertical'
 
+# Copy the current selection, then open it in Ask AI.
+# macOS may ask AeroSpace for Accessibility permission the first time.
+cmd-shift-a = '''exec-and-forget osascript -e 'tell application "System Events" to keystroke "c" using command down' && sleep 0.2 && ~/.local/bin/ask-ai --from-clipboard'''
+
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus
 cmd-h = 'focus left'
 cmd-j = 'focus down'
