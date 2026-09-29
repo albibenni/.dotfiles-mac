@@ -27,6 +27,9 @@ after-startup-command = [
 # Start AeroSpace at login
 start-at-login = true
 
+# Pick up future dotfile edits without a manual reload.
+auto-reload-config = true
+
 # Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
 enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
@@ -104,9 +107,9 @@ outer.right =      8
 cmd-slash = 'layout tiles horizontal vertical'
 cmd-comma = 'layout accordion horizontal vertical'
 
-# Copy the current selection, then open it in Ask AI.
-# macOS may ask AeroSpace for Accessibility permission the first time.
-cmd-shift-a = '''exec-and-forget osascript -e 'tell application "System Events" to keystroke "c" using command down' && sleep 0.2 && ~/.local/bin/ask-ai --from-clipboard'''
+# Open Ask AI using its normal capture workflow. It waits for the shortcut to
+# be released, copies the selection, and preserves image clipboard content.
+cmd-shift-a = 'exec-and-forget ~/.local/bin/ask-ai'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus
 cmd-h = 'focus left'
